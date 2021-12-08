@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "823839268219",
+    "project_id": "prayerproject-c04e0",
+    "storage_bucket": "prayerproject-c04e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823839268219:android:6aa33185550ac81b8a31de",
+        "android_client_info": {
+          "package_name": "com.example.prayerproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823839268219-mtraa896vub8a0grb57udfp2vtigjh22.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM_FPzMV5Z_vCPpuEf1KggggJuBK6UtO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823839268219-mtraa896vub8a0grb57udfp2vtigjh22.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
