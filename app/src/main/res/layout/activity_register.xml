@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/masjid"
+    android:backgroundTint="#66FFFFFF"
+    android:backgroundTintMode="src_over"
     android:padding="20dp"
     tools:context="com.example.athu.RegisterActivity">
 
@@ -12,7 +14,7 @@
         android:id="@+id/register_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="serif"
         android:text="Register"
         android:textColor="#000000"
@@ -48,7 +50,7 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Password"
-            android:inputType="numberPassword" />
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/register_button"
@@ -67,6 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Already have an account ?" />
+            android:text="Already have an account ?"
+            android:textColor="#000000" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

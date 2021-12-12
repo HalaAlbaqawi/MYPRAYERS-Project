@@ -1,24 +1,26 @@
-package com.example.athu
+package com.example.prayerproject.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.prayerproject.MainActivity
+import com.example.prayerproject.main.MainActivity
 import com.example.prayerproject.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
+const val TAG = "RegisterActivity"
 class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        val emailAddress: EditText =findViewById(R.id.emailAddress_EditText)
-        val password:EditText=findViewById(R.id.password_EditText)
+        val emailAddress: EditText =findViewById(R.id.register_email_address_edittext)
+        val password:EditText=findViewById(R.id.register_passowrd_edittext)
         val registerButton: Button =findViewById(R.id.register_button)
         val loginTextView: TextView =findViewById(R.id.login_textView)
 
@@ -28,16 +30,18 @@ class RegisterActivity : AppCompatActivity() {
             finish()
         }
         registerButton.setOnClickListener(){
-            val email:String=emailAddress.text.toString()
+            val email:String=emailAddress.text.toString().trim()
             val password:String=password.text.toString()
             if(email.isNotEmpty() && password.isNotEmpty()){
+
+                Log.d("RegisterActivity",email)
                 FirebaseAuth.getInstance()
                     .createUserWithEmailAndPassword(email,password)
                     .addOnCompleteListener {
                             task ->
                         if (task.isSuccessful){
                             val firebaseuser:FirebaseUser = task.result!!.user!!
-                            Toast.makeText(this, "User Registered Successfully", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "You Registered Successfully", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this, MainActivity::class.java)
                             intent.putExtra("UserId", firebaseuser.uid)
                             intent.putExtra("Email", firebaseuser.email)
@@ -45,6 +49,8 @@ class RegisterActivity : AppCompatActivity() {
                             finish()
                         }
                         else{
+                            Log.d("RegisterActivity",task.exception!!.message.toString())
+
                             Toast.makeText(this, task.exception!!.message.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }

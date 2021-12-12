@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.prayerproject.R
+import com.example.prayerproject.databinding.FragmentAthkarBinding
+import com.example.prayerproject.databinding.FragmentHomeBinding
 
-class DuaaViewFragment : Fragment() {
+class AthkarFragment : Fragment() {
+
+    private lateinit var binding: FragmentAthkarBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +23,8 @@ class DuaaViewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_duaa_view, container, false)
+        binding = FragmentAthkarBinding.inflate(inflater, container, false)
+        return binding.root
     }
-
 
 }

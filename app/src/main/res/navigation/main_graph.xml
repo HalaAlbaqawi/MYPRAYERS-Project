@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.prayerproject.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.prayerproject.view.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/prayersTimeFragment"
+        android:name="com.example.prayerproject.view.PrayersTimeFragment"
+        android:label="fragment_prayers_time"
+        tools:layout="@layout/fragment_prayers_time" />
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.prayerproject.view.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_myFavoriteAthkarFragment"
+            app:destination="@id/myFavoriteAthkarFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_athkarFragment"
+            app:destination="@id/athkarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myFavoriteAthkarFragment"
+        android:name="com.example.prayerproject.view.MyFavoriteAthkarFragment"
+        android:label="fragment_my_favorite_athkar"
+        tools:layout="@layout/fragment_my_favorite_athkar" />
+    <fragment
+        android:id="@+id/athkarFragment"
+        android:name="com.example.prayerproject.view.AthkarFragment"
+        android:label="fragment_athkar"
+        tools:layout="@layout/fragment_athkar" />
+</navigation>
