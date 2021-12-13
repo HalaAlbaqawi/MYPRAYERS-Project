@@ -8,24 +8,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.activityViewModels
 import com.example.prayerproject.R
 import com.example.prayerproject.databinding.FragmentMenuBinding
 import com.example.prayerproject.databinding.FragmentPrayersTimeBinding
+import com.example.prayerproject.model.Timings
 import com.google.android.gms.location.LocationServices
 import java.lang.Exception
+import com.google.android.gms.location.FusedLocationProviderClient
 
-
+val LOCATION_PERMISSION_REQ_CODE = 1000
 private const val TAG = "PrayersTimeFragment"
 class PrayersTimeFragment : Fragment() {
 
     private lateinit var binding: FragmentPrayersTimeBinding
-
-    private val prayersTimeViewModel: PrayersTimeViewModel by activityViewModels ()
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private val prayersTimeViewModel: PrayersTimeViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
     }
 
     override fun onCreateView(
@@ -39,59 +43,58 @@ class PrayersTimeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "in fragment")
 
         observers()
-
-
-        val fusedLocationProviderClient =
-            LocationServices.getFusedLocationProviderClient(requireActivity())
-
-        if (ActivityCompat.checkSelfPermission(
-                requireActivity(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireActivity(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            fusedLocationProviderClient.lastLocation.addOnSuccessListener {
-                try {
-                    var longitude = it.longitude
-                    var latitude = it.latitude
-                    prayersTimeViewModel.callData(latitude, longitude)
-
-                } catch (e: Exception) {
-                    Log.d(TAG, e.message.toString())
-                }
-
-            }
-        }
-
-            /*getLocation.addOnSuccessListener {
-
-                try {
-                    var longitude = it.longitude
-                    var latitude = it.latitude
-                    PrayersTimeViewModel.callData(latitude,longitude)
-
-                }catch (e:Exception){
-                    Log.d(TAG,e.message.toString())
-                }
-
-            }
-        return*/
-
-        }
-
-
-
+        getCurrentLocation()
 
     }
 
 
-    fun observers(){
+    private fun getCurrentLocation() {
+
+        // checking location permission
+        if (ActivityCompat.checkSelfPermission(requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                // getting the last known or current location
+                val latitude = location.latitude
+               val  longitude = location.longitude
+                prayersTimeViewModel.callData(latitude,longitude)
+
+
+
+            }
+                .addOnFailureListener {
+                    Toast.makeText(requireContext(), "Failed on getting current location",
+                        Toast.LENGTH_SHORT).show()
+                }
+
+        } else
+        {
+            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), LOCATION_PERMISSION_REQ_CODE)
+        }
+
     }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        getCurrentLocation()
+    }
+    fun observers() {
+        prayersTimeViewModel.prayerLiveData.observe(viewLifecycleOwner,{
+            binding.fajrTextView.text = it.data.timings.fajr
+            binding.sunriseTextView.text = it.data.timings.sunrise
+            binding.dhuhrTextView.text = it.data.timings.dhuhr
+            binding.asrTextView.text = it.data.timings.asr
+            binding.maghribTextView.text = it.data.timings.maghrib
+            binding.ishaaTextView.text = it.data.timings.isha
+        })
 
 
-
-
+    }
+}

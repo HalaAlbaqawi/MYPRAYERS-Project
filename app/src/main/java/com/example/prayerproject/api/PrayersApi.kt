@@ -21,11 +21,4 @@ suspend fun getData (
     ): Response<PrayerModel>
 
 
-    @GET("/Duaa")
-    suspend fun getAthkar (
-
-        ): Response <List<AthkarModel>>
-
-
-
 }

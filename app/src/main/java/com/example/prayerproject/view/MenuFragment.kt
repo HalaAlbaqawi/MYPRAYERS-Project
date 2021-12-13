@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.prayerproject.R
 import com.example.prayerproject.databinding.FragmentHomeBinding
 import com.example.prayerproject.databinding.FragmentMenuBinding
@@ -26,6 +27,20 @@ class MenuFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentMenuBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.duaaCardView.setOnClickListener {
+
+         findNavController().navigate(R.id.action_menuFragment_to_athkarFragment)
+        }
+
+        binding.duaaListCardView.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_myFavoriteAthkarFragment)
+
+        }
     }
 
 }

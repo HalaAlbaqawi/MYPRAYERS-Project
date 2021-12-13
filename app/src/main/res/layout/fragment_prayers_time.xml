@@ -9,7 +9,7 @@
     tools:context=".view.PrayersTimeFragment">
 
     <TextView
-        android:id="@+id/time_textView"
+        android:id="@+id/fajr_textView"
         android:layout_width="385dp"
         android:layout_height="70dp"
         android:layout_marginTop="32dp"
@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.384"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/time_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/fajr_textView" />
 
     <TextView
         android:id="@+id/dhuhr_textView"

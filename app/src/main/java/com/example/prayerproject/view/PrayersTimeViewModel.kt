@@ -20,7 +20,6 @@ class PrayersTimeViewModel: ViewModel() {
 
 
 
-
     fun callData(lat: Double, long: Double) {
         viewModelScope.launch(Dispatchers.IO) {
             try {

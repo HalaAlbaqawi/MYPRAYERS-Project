@@ -12,8 +12,10 @@ import androidx.fragment.app.activityViewModels
 import com.example.prayerproject.R
 import com.example.prayerproject.databinding.FragmentHomeBinding
 import com.example.prayerproject.model.PrayerModel
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.chrono.HijrahDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
@@ -51,32 +53,43 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observers()
-//        val current = LocalDateTime.now()
-//
-//        val formatter = DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM)
-//        val formatted = current.format(formatter)
-//        binding.timeTextView.text = formatted
+
+
         val formatter = DateTimeFormatter.ofPattern("hh:mm a").format(LocalTime.now())
         binding.timeTextView.text = formatter.toString()
 
-//        dateFormat = new SimpleDateFormat("hh:mm a")
 
 
         val sdf = SimpleDateFormat("dd/MM/yyyy")
         val currentDate = sdf.format(Date())
         binding.gregorianDateTextView.text = currentDate
+
+       // hijri date format
+
+        val dt: LocalDate = LocalDate.now()
+
+        val hijrahDate: HijrahDate = HijrahDate.from(dt)
+
+        val formatter1 = DateTimeFormatter.ofPattern("MM/dd/yyyy")
+        val formatted = formatter1.format(hijrahDate)
+
+        Log.d(TAG, formatted)
+        binding.hijriDateTextView.text = formatted
+
+        val cal = Calendar.getInstance()
+        val monthDate = SimpleDateFormat("MMMM")
+        val monthName = monthDate.format(cal.time)
+        binding.gregorianDateTextView.text = monthName
+        Log.d(TAG, monthName)
+
+
+        val formatter2 = DateTimeFormatter.ofPattern("MMMM")
+        val formatted1 = formatter2.format(hijrahDate)
+        binding.hijriTextView.text = formatted1
+        Log.d(TAG, formatted1)
+
     }
 
 
 
-    fun observers(){
-     homeViewModel.homeLiveData.observe(viewLifecycleOwner,{
-         binding.hijriDateTextView.text = "${it.data.date.hijri.date}"
-         Log.d(TAG,"no data".toString())
-
-     })
-
-
-    }
 }

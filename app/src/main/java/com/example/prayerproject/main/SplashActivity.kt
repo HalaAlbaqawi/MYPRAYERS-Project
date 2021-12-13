@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.prayerproject.R
+import com.example.prayerproject.repositories.ApiServiceAthkarRepository
 import com.example.prayerproject.repositories.ApiServiceRepository
 
 lateinit var handler: Handler
@@ -14,8 +15,9 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        //initialized the companion object on repository
+        //initializing the companion object on repositories
         ApiServiceRepository.init(this)
+        ApiServiceAthkarRepository.init(this)
 
         handler = Handler()
         handler.postDelayed({
