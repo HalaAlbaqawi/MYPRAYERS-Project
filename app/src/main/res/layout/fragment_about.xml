@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardView"
+    android:background="@drawable/ww"
     tools:context=".view.AboutFragment">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:text="بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ"
-        android:textColor="@color/black"
+        android:textColor="@color/cardView"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +29,7 @@
         android:background="@android:color/transparent"
         android:src="@drawable/ic__mousqe"
         android:text="website"
+        android:tint="@color/cardView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="@string/AboutMyPrayers"
-        android:textColor="@color/black"
+        android:textColor="@color/cardView"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -54,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="9dp"
         android:text="Please Click Here"
+        android:textColor="@color/cardView"
         app:layout_constraintBottom_toTopOf="@+id/website_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

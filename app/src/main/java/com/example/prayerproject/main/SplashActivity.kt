@@ -19,6 +19,8 @@ class SplashActivity : AppCompatActivity() {
         ApiServiceRepository.init(this)
         ApiServiceAthkarRepository.init(this)
 
+        window.navigationBarColor =
+            this.resources.getColor(R.color.black) // this is for the navigation bar color of the android system
         handler = Handler()
         handler.postDelayed({
 

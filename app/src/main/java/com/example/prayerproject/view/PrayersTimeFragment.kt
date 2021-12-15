@@ -87,6 +87,7 @@ class PrayersTimeFragment : Fragment() {
     }
     fun observers() {
         prayersTimeViewModel.prayerLiveData.observe(viewLifecycleOwner,{
+            binding.progressBarPrayerTime.animate().alpha(0f)
             binding.fajrTextView.text = it.data.timings.fajr
             binding.sunriseTextView.text = it.data.timings.sunrise
             binding.dhuhrTextView.text = it.data.timings.dhuhr

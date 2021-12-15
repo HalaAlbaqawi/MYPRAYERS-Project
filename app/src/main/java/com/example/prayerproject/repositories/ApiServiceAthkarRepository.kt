@@ -3,6 +3,7 @@ package com.example.prayerproject.repositories
 import android.content.Context
 import com.example.prayerproject.api.AthkarApi
 import com.example.prayerproject.api.PrayersApi
+import com.example.prayerproject.model.AthkarModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -24,7 +25,10 @@ class ApiServiceAthkarRepository(val context: Context) {
 
 
    suspend fun getAthkar() = retrofitApi.getAthkar()
-
+   suspend fun getMyAthkar(userid: String) = retrofitApi.getMyAthkar(userid)
+   suspend fun addAthkar(athkarModel: AthkarModel)= retrofitApi.addAthkar(athkarModel)
+   suspend fun editAthkar(athkarModel: AthkarModel)= retrofitApi.editAthkar(athkarModel.id,athkarModel)
+   suspend fun deleteAthkar(id: String)=retrofitApi.deleteAthkar(id)
 
     companion object{
         private var instance: ApiServiceAthkarRepository? = null
@@ -41,16 +45,5 @@ class ApiServiceAthkarRepository(val context: Context) {
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }

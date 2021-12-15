@@ -21,7 +21,6 @@ class AthkarFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -35,23 +34,23 @@ class AthkarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.d(TAG, "helloooo")
+        Log.d(TAG, "athkar fragment")
         observers()
 
         athkarViewModel.callData()
 
-        athkarAdapter = AthkarAdapter()
+        athkarAdapter = AthkarAdapter(athkarViewModel)
         binding.athkarRecyclerView.adapter = athkarAdapter
 
 
     }
 
 
-
-
     fun observers(){
     athkarViewModel.athkarLiveData.observe(viewLifecycleOwner,{
         athkarAdapter.submitList(it)
+        binding.progressBarAthkar.animate().alpha(0f)
+
     })
 
 

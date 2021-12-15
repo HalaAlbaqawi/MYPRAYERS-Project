@@ -19,12 +19,12 @@ import java.time.chrono.HijrahDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
-
+private lateinit var binding: FragmentHomeBinding
 private const val TAG = "HomeFragment"
 class HomeFragment : Fragment() {
 
     private lateinit var logout: MenuItem
-    private lateinit var binding: FragmentHomeBinding
+
  private val homeViewModel: HomeViewModel by activityViewModels ()
 
 
@@ -79,13 +79,13 @@ class HomeFragment : Fragment() {
         val cal = Calendar.getInstance()
         val monthDate = SimpleDateFormat("MMMM")
         val monthName = monthDate.format(cal.time)
-        binding.gregorianDateTextView.text = monthName
+        binding.gregorianMonthTextView.text = monthName
         Log.d(TAG, monthName)
 
 
         val formatter2 = DateTimeFormatter.ofPattern("MMMM")
         val formatted1 = formatter2.format(hijrahDate)
-        binding.hijriTextView.text = formatted1
+        binding.hijriMonthTextView.text = formatted1
         Log.d(TAG, formatted1)
 
     }

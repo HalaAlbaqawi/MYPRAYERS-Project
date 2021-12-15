@@ -9,5 +9,7 @@ data class AthkarModel(
     @SerializedName("id")
     val id: String,
     @SerializedName("title")
-    val title: String
+    val title: String,
+    @SerializedName("userid")
+    val userid: String = ""
 )

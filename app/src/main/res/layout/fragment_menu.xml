@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ww"
+    android:background="@drawable/masjidq"
     android:isScrollContainer="false"
     tools:context=".view.MenuFragment">
 
@@ -14,7 +14,7 @@
         android:layout_width="324dp"
         android:layout_height="150dp"
         android:layout_marginTop="120dp"
-        app:cardBackgroundColor="#C6DDDACE"
+        app:cardBackgroundColor="@color/cardView"
         app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
