@@ -47,13 +47,14 @@ class MyFavoriteAthkarFragment : Fragment() {
 
         myFavoriteAthkarViewModel.callData()
 
-        myFavoriteAthkarAdapter = MyFavoriteAthkarAdapter(myFavoriteAthkarViewModel)
+        myFavoriteAthkarAdapter = MyFavoriteAthkarAdapter(myFavoriteAthkarViewModel, requireActivity())
         binding.myathkarRecyclerView.adapter = myFavoriteAthkarAdapter
 
     }
 
     fun observers(){
      myFavoriteAthkarViewModel.myAthkarLiveData.observe(viewLifecycleOwner,{
+         Log.d(TAG,"$it")
      myFavoriteAthkarAdapter.submitList(it)
      })
      binding.progressbarMyfav.animate().alpha(0f)

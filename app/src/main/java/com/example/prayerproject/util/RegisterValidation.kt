@@ -1,4 +1,4 @@
-package com.example.e_commerce.util
+package com.example.prayerproject.util
 import java.util.regex.Pattern
 
     class RegisterValidation {

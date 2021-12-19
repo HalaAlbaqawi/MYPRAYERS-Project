@@ -6,10 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.prayerproject.model.AthkarModel
 import com.example.prayerproject.repositories.ApiServiceAthkarRepository
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 private const val TAG = "AthkarViewModel"
+
 class AthkarViewModel : ViewModel() {
 
     private val apiRepo = ApiServiceAthkarRepository.get()
@@ -37,12 +39,18 @@ class AthkarViewModel : ViewModel() {
 
 
     }
+
     fun addAthkar(athkarModel: AthkarModel) {
 
-        Log.d(TAG,"check")
+        Log.d(TAG, "check")
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = apiRepo.addAthkar(AthkarModel(athkarModel.athkar,"",athkarModel.title))
+                val response = apiRepo.addAthkar(
+                    AthkarModel(
+                        athkarModel.athkar, "", athkarModel.title,
+                        FirebaseAuth.getInstance().currentUser!!.uid
+                    )
+                )
                 if (response.isSuccessful) {
                     response.body()?.run {
                         Log.d(TAG, this.toString())
@@ -52,7 +60,7 @@ class AthkarViewModel : ViewModel() {
                 Log.d(TAG, response.message())
 
             } catch (e: Exception) {
-                Log.d(TAG,e.message.toString())
+                Log.d(TAG, e.message.toString())
                 LiveData.postValue("UnSucessful")
             }
         }

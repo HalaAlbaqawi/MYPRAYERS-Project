@@ -11,13 +11,13 @@ import kotlinx.coroutines.launch
 
 
 private const val TAG = "PrayersTimeViewModel"
-class PrayersTimeViewModel: ViewModel() {
+
+class PrayersTimeViewModel : ViewModel() {
 
     private val apiRepo = ApiServiceRepository.get()
 
     val prayerLiveData = MutableLiveData<PrayerModel>()
     val prayerErrorLiveData = MutableLiveData<String>()
-
 
 
     fun callData(lat: Double, long: Double) {

@@ -17,7 +17,7 @@ interface AthkarApi {
     ): Response<List<AthkarModel>>
 
 
-    @POST("/myduaa}")
+    @POST("/myduaa")
     suspend fun addAthkar(@Body AktharBody: AthkarModel): Response<ResponseBody>
 
 

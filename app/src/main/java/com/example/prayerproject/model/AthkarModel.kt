@@ -11,5 +11,10 @@ data class AthkarModel(
     @SerializedName("title")
     val title: String,
     @SerializedName("userid")
-    val userid: String = ""
+    val userid: String = "",
+    @SerializedName("isNotify")
+    var isNotify: Boolean = false,
+    @SerializedName("time")
+    var time: String = ""
+
 )

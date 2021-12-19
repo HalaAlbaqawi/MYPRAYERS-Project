@@ -1,17 +1,28 @@
 package com.example.prayerproject.adapter
 
+import android.app.TimePickerDialog
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.TimePicker
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.prayerproject.databinding.AthkarItemLayoutBinding
 import com.example.prayerproject.model.AthkarModel
 import com.example.prayerproject.view.AthkarViewModel
+import com.example.prayerproject.view.MyFavoriteAthkarViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 const val TAG = "AthkarAdapter"
-class AthkarAdapter(val athkarViewModel: AthkarViewModel):RecyclerView.Adapter<AthkarAdapter.AthkarViewHolder>() {
+
+class AthkarAdapter(
+    val athkarViewModel: AthkarViewModel,
+    val myFavoriteAthkarViewModel: MyFavoriteAthkarViewModel,
+) : RecyclerView.Adapter<AthkarAdapter.AthkarViewHolder>() {
 
 
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AthkarModel>() {
@@ -38,30 +49,38 @@ class AthkarAdapter(val athkarViewModel: AthkarViewModel):RecyclerView.Adapter<A
 
         val binding =
             AthkarItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return AthkarViewHolder(binding,athkarViewModel)
+        return AthkarViewHolder(binding, athkarViewModel)
     }
 
 
     override fun onBindViewHolder(holder: AthkarViewHolder, position: Int) {
         val item = differ.currentList[position]
         holder.bind(item)
-           holder.binding.addImagebutton.setOnClickListener {
-               athkarViewModel.addAthkar(item)
-           }
+        holder.binding.addImagebutton.setOnClickListener {
+            Log.d(TAG, "inside the add")
+            athkarViewModel.addAthkar(item)
+
+        }
+
+
     }
+
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
 
-     class AthkarViewHolder(val binding: AthkarItemLayoutBinding, val athkarViewModel: AthkarViewModel,) :
+    class AthkarViewHolder(
+        val binding: AthkarItemLayoutBinding,
+        val athkarViewModel: AthkarViewModel,
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(athkarModel: AthkarModel) {
 
             binding.athkarTextview.text = athkarModel.athkar
             binding.titleTextview.text = athkarModel.title
-         val addbutton = binding.addImagebutton
-         }
-
         }
+
     }
+}
+
