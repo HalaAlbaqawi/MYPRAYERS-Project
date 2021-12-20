@@ -24,7 +24,6 @@ class RegisterActivity : AppCompatActivity() {
         val registerButton: Button =findViewById(R.id.register_button)
         val loginTextView: TextView =findViewById(R.id.login_textView)
 
-
         loginTextView.setOnClickListener(){
             startActivity(Intent(this,LoginActivity::class.java))
             finish()
@@ -56,4 +55,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
             }
         }
-    }}
+    }
+
+
+}

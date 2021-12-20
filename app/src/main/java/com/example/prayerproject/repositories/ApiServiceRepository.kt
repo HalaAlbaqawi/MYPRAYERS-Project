@@ -22,6 +22,7 @@ class ApiServiceRepository (val context: Context){
     suspend fun getData(lat: Double, lon: Double) = retrofitApi.getData(lat, lon)
 
 
+
     companion object{
         private var instance: ApiServiceRepository? = null
         // design pattern
