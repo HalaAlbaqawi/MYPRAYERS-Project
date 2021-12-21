@@ -10,10 +10,12 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.prayerproject.main.MainActivity
 import com.example.prayerproject.R
+import com.example.prayerproject.util.RegisterValidation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 const val TAG = "RegisterActivity"
+private val validator = RegisterValidation()
 class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +35,12 @@ class RegisterActivity : AppCompatActivity() {
             val password:String=password.text.toString()
             if(email.isNotEmpty() && password.isNotEmpty()){
 
+                // To check if your password and email are strong and correct
+                if (validator.passwordIsValid(password)) {
+                } else
+                    Toast.makeText(this, "Make sure your password is strong.", Toast.LENGTH_SHORT).show()
+            } else
+                Toast.makeText(this, "Make sure you typed your email address correctly.", Toast.LENGTH_SHORT).show()
                 Log.d("RegisterActivity",email)
                 FirebaseAuth.getInstance()
                     .createUserWithEmailAndPassword(email,password)
@@ -56,6 +64,3 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
-
-
-}
