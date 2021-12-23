@@ -75,6 +75,7 @@ class PrayersTimeFragment : Fragment() {
                 // getting the last known or current location
                 val latitude = location.latitude
                 val longitude = location.longitude
+                Log.d("aaaaa","$latitude,$longitude")
                 prayersTimeViewModel.callData(latitude, longitude)
 
 
