@@ -3,9 +3,9 @@ package com.example.prayerproject.model
 
 import com.google.gson.annotations.SerializedName
 
-data class AthkarModel(
-    @SerializedName("athkar")
-    val athkar: String,
+data class DuaaModel(
+    @SerializedName("duaa")
+    val duaa: String,
     @SerializedName("id")
     val id: String,
     @SerializedName("title")

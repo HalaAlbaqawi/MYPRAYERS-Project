@@ -3,41 +3,37 @@ package com.example.prayerproject.adapter
 
 import android.app.TimePickerDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.prayerproject.R
 import com.example.prayerproject.databinding.MyathkarItemLayoutBinding
-import com.example.prayerproject.model.AthkarModel
-import com.example.prayerproject.view.AthkarViewModel
+import com.example.prayerproject.model.DuaaModel
 import com.example.prayerproject.view.MyFavoriteAthkarViewModel
 
 
-class MyFavoriteAthkarAdapter(
+class MyFavoriteDuaaAdapter(
     val myFavoriteAthkarViewModel: MyFavoriteAthkarViewModel,
     val context: Context
-) : RecyclerView.Adapter<MyFavoriteAthkarAdapter.MyFavoriteAthkarViewHolder>() {
+) : RecyclerView.Adapter<MyFavoriteDuaaAdapter.MyFavoriteAthkarViewHolder>() {
 
-    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AthkarModel>() {
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DuaaModel>() {
 
-        override fun areItemsTheSame(oldItem: AthkarModel, newItem: AthkarModel): Boolean {
+        override fun areItemsTheSame(oldItem: DuaaModel, newItem: DuaaModel): Boolean {
             // we should use id but it could be any thing unique like username
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: AthkarModel, newItem: AthkarModel): Boolean {
+        override fun areContentsTheSame(oldItem: DuaaModel, newItem: DuaaModel): Boolean {
             return oldItem == newItem
         }
     }
 
     private val differ = AsyncListDiffer(this, DIFF_CALLBACK)
 
-    fun submitList(list: List<AthkarModel>) {
+    fun submitList(list: List<DuaaModel>) {
         differ.submitList(list)
     }
 
@@ -57,7 +53,7 @@ class MyFavoriteAthkarAdapter(
         holder.bind(item)
         holder.binding.deleteImageButton.setOnClickListener {
 
-            val myAthkar = mutableListOf<AthkarModel>()
+            val myAthkar = mutableListOf<DuaaModel>()
             myAthkar.addAll(differ.currentList)
             myAthkar.remove(item)
             myFavoriteAthkarViewModel.deleteAthkar(item.id)
@@ -79,7 +75,7 @@ class MyFavoriteAthkarAdapter(
     }
 
     // time picker dialog on favorite duaa to remind the user what time he wants
-    fun timePicker(item: AthkarModel) {
+    fun timePicker(item: DuaaModel) {
 
         var timeSet: String = ""
         val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
@@ -110,9 +106,9 @@ class MyFavoriteAthkarAdapter(
 
     class MyFavoriteAthkarViewHolder(val binding: MyathkarItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(athkarModel: AthkarModel) {
+        fun bind(athkarModel: DuaaModel) {
 
-            binding.athkarTextview.text = athkarModel.athkar
+            binding.athkarTextview.text = athkarModel.duaa
             binding.titleTextview.text = athkarModel.title
             val deleteImageButton = binding.deleteImageButton
             val notificationToggleButton = binding.toggleButton

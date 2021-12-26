@@ -10,4 +10,5 @@
     <string name="hijri">Hijri</string>
     <string name="gregorian">Gregorian</string>
     <string name="AboutMyPrayers">About the Al Adhan Service</string>
+    <string name="qibla">Qibla</string>
 </resources>

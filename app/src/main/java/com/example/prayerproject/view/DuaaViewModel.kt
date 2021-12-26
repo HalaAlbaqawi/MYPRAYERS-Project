@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.prayerproject.model.AthkarModel
+import com.example.prayerproject.model.DuaaModel
 import com.example.prayerproject.repositories.ApiServiceAthkarRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +15,7 @@ private const val TAG = "AthkarViewModel"
 class AthkarViewModel : ViewModel() {
 
     private val apiRepo = ApiServiceAthkarRepository.get()
-    val athkarLiveData = MutableLiveData<List<AthkarModel>>()
+    val athkarLiveData = MutableLiveData<List<DuaaModel>>()
     val LiveData = MutableLiveData<String>()
     val athkarErrorLiveData = MutableLiveData<String>()
 
@@ -40,14 +40,14 @@ class AthkarViewModel : ViewModel() {
 
     }
 
-    fun addAthkar(athkarModel: AthkarModel) {
+    fun addAthkar(athkarModel: DuaaModel) {
 
         Log.d(TAG, "check")
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = apiRepo.addAthkar(
-                    AthkarModel(
-                        athkarModel.athkar, "", athkarModel.title,
+                    DuaaModel(
+                        athkarModel.duaa, "", athkarModel.title,
                         FirebaseAuth.getInstance().currentUser!!.uid
                     )
                 )

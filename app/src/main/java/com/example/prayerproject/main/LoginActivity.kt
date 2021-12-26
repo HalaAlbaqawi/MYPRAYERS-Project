@@ -23,9 +23,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val emailAddress:EditText = findViewById(R.id.emailAddress_EditText)
-        val password:EditText = findViewById(R.id.password_EditText)
-        val loginButton:Button = findViewById(R.id.login_button)
+        val emailAddress: EditText = findViewById(R.id.emailAddress_EditText)
+        val password: EditText = findViewById(R.id.password_EditText)
+        val loginButton: Button = findViewById(R.id.login_button)
         val registerTextView: TextView = findViewById(R.id.register_TextView)
 
         registerTextView.setOnClickListener {
@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         sharedPref = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
-        if (sharedPref.getBoolean("is Logged", false)){
+        if (sharedPref.getBoolean("is Logged", false)) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -42,26 +42,33 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             val email: String = emailAddress.text.toString().trim()
             val password: String = password.text.toString()
-            if (email.isNotEmpty() && password.isNotEmpty()){
+            if (email.isNotEmpty() && password.isNotEmpty()) {
                 FirebaseAuth.getInstance()
                     .signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener {
-                            task ->
-                        if(task.isSuccessful){
-                            Toast.makeText(this, "you're Logged in Successfully", Toast.LENGTH_SHORT).show()
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(
+                                this,
+                                "you're Logged in Successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             // Navigate to Main Activity
                             val intent = Intent(this, MainActivity::class.java)
                             intent.putExtra("UserId", FirebaseAuth.getInstance().currentUser!!.uid)
-                            intent.putExtra("Email",FirebaseAuth.getInstance().currentUser!!.email)
-                            sharedPref = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
+                            intent.putExtra("Email", FirebaseAuth.getInstance().currentUser!!.email)
+                            sharedPref =
+                                this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
                             sharedPrefEditor = sharedPref.edit()
                             sharedPrefEditor.putBoolean("is Logged", true)
                             sharedPrefEditor.commit()
                             startActivity(intent)
                             finish()
-                        }
-                        else{
-                            Toast.makeText(this, task.exception!!.message.toString(), Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(
+                                this,
+                                task.exception!!.message.toString(),
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
             }

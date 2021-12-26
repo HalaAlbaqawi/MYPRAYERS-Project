@@ -24,25 +24,27 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-       binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
-        NavigationUI.setupWithNavController(binding.bottomNavigation,navController)
+        NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
 
         window.navigationBarColor =
-     this.resources.getColor(R.color.black) // this is for the navigation bar color of the android system
+            this.resources.getColor(R.color.black) // this is for the navigation bar color of the android system
 
         binding.menuButton.setOnClickListener {
-            val popupMenu: PopupMenu = PopupMenu(this,binding.menuButton)
-            popupMenu.menuInflater.inflate(R.menu.main_menu,popupMenu.menu)
+            val popupMenu: PopupMenu = PopupMenu(this, binding.menuButton)
+            popupMenu.menuInflater.inflate(R.menu.main_menu, popupMenu.menu)
             popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
-                when(item.itemId) {
+                when (item.itemId) {
                     R.id.logout_item -> {
                         FirebaseAuth.getInstance().signOut()
 
 
-                        sharedPref = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
+                        sharedPref =
+                            this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
                         sharedPrefEditor = sharedPref.edit()
                         sharedPrefEditor.putBoolean("is Logged", false)
                         sharedPrefEditor.commit()
@@ -52,10 +54,11 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     R.id.about_item -> {
-                  val fragment = navHostFragment.childFragmentManager.primaryNavigationFragment
-                   when(fragment){
-                       is HomeFragment -> navController.navigate(R.id.action_homeFragment_to_aboutFragment)
-                   }
+                        val fragment =
+                            navHostFragment.childFragmentManager.primaryNavigationFragment
+                        when (fragment) {
+                            is HomeFragment -> navController.navigate(R.id.action_homeFragment_to_aboutFragment)
+                        }
 
                     }
 

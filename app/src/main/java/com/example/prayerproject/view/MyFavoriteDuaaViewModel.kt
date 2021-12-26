@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.prayerproject.model.AthkarModel
+import com.example.prayerproject.model.DuaaModel
 import com.example.prayerproject.repositories.ApiServiceAthkarRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +18,7 @@ class MyFavoriteAthkarViewModel : ViewModel() {
     private val apiRepo = ApiServiceAthkarRepository.get()
 
 
-    val myAthkarLiveData = MutableLiveData<List<AthkarModel>>()
+    val myAthkarLiveData = MutableLiveData<List<DuaaModel>>()
     val myAthkarErrorLiveData = MutableLiveData<String>()
     val LiveData = MutableLiveData<String>()
 
@@ -61,7 +61,7 @@ class MyFavoriteAthkarViewModel : ViewModel() {
         }
     }
 
-    fun editAthkar(athkarModel: AthkarModel) {
+    fun editAthkar(athkarModel: DuaaModel) {
 
         Log.d(TAG, "edit Athkar")
         Log.d(TAG, athkarModel.toString())

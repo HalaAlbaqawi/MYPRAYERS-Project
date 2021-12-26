@@ -1,9 +1,8 @@
 package com.example.prayerproject.repositories
 
 import android.content.Context
-import com.example.prayerproject.api.AthkarApi
-import com.example.prayerproject.api.PrayersApi
-import com.example.prayerproject.model.AthkarModel
+import com.example.prayerproject.api.DuaaApi
+import com.example.prayerproject.model.DuaaModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -20,14 +19,14 @@ class ApiServiceAthkarRepository(val context: Context) {
         .build()
 
     //API FOR RETROFIT
-    private val retrofitApi = retrofitService.create(AthkarApi::class.java)
+    private val retrofitApi = retrofitService.create(DuaaApi::class.java)
 
 
 
    suspend fun getAthkar() = retrofitApi.getAthkar()
    suspend fun getMyAthkar(userid: String) = retrofitApi.getMyAthkar(userid)
-   suspend fun addAthkar(athkarModel: AthkarModel)= retrofitApi.addAthkar(athkarModel)
-   suspend fun editAthkar(athkarModel: AthkarModel)= retrofitApi.editAthkar(athkarModel.id,athkarModel)
+   suspend fun addAthkar(athkarModel: DuaaModel)= retrofitApi.addAthkar(athkarModel)
+   suspend fun editAthkar(athkarModel: DuaaModel)= retrofitApi.editAthkar(athkarModel.id,athkarModel)
    suspend fun deleteAthkar(id: String)=retrofitApi.deleteAthkar(id)
 
     companion object{

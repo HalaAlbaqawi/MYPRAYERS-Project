@@ -1,21 +1,15 @@
 package com.example.prayerproject.adapter
 
-import android.app.TimePickerDialog
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.TimePicker
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.prayerproject.databinding.AthkarItemLayoutBinding
-import com.example.prayerproject.model.AthkarModel
+import com.example.prayerproject.model.DuaaModel
 import com.example.prayerproject.view.AthkarViewModel
 import com.example.prayerproject.view.MyFavoriteAthkarViewModel
-import java.text.SimpleDateFormat
-import java.util.*
 
 const val TAG = "AthkarAdapter"
 
@@ -25,20 +19,20 @@ class AthkarAdapter(
 ) : RecyclerView.Adapter<AthkarAdapter.AthkarViewHolder>() {
 
 
-    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AthkarModel>() {
-        override fun areItemsTheSame(oldItem: AthkarModel, newItem: AthkarModel): Boolean {
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DuaaModel>() {
+        override fun areItemsTheSame(oldItem: DuaaModel, newItem: DuaaModel): Boolean {
             // we should use id but it could be any thing unique like username
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: AthkarModel, newItem: AthkarModel): Boolean {
+        override fun areContentsTheSame(oldItem: DuaaModel, newItem: DuaaModel): Boolean {
             return oldItem == newItem
         }
     }
 
     private val differ = AsyncListDiffer(this, DIFF_CALLBACK)
 
-    fun submitList(list: List<AthkarModel>) {
+    fun submitList(list: List<DuaaModel>) {
         differ.submitList(list)
     }
 
@@ -75,9 +69,9 @@ class AthkarAdapter(
         val athkarViewModel: AthkarViewModel,
     ) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(athkarModel: AthkarModel) {
+        fun bind(athkarModel: DuaaModel) {
 
-            binding.athkarTextview.text = athkarModel.athkar
+            binding.athkarTextview.text = athkarModel.duaa
             binding.titleTextview.text = athkarModel.title
         }
 

@@ -75,7 +75,7 @@ class PrayersTimeFragment : Fragment() {
                 // getting the last known or current location
                 val latitude = location.latitude
                 val longitude = location.longitude
-                Log.d("aaaaa","$latitude,$longitude")
+                Log.d("aaaaa", "$latitude,$longitude")
                 prayersTimeViewModel.callData(latitude, longitude)
 
 
@@ -111,12 +111,12 @@ class PrayersTimeFragment : Fragment() {
     fun observers() {
         prayersTimeViewModel.prayerLiveData.observe(viewLifecycleOwner, {
             binding.progressBarPrayerTime.animate().alpha(0f)
-            binding.fajrTextView.text = it.data.timings.fajr
-            binding.sunriseTextView.text = it.data.timings.sunrise
-            binding.dhuhrTextView.text = it.data.timings.dhuhr
-            binding.asrTextView.text = it.data.timings.asr
-            binding.maghribTextView.text = it.data.timings.maghrib
-            binding.ishaaTextView.text = it.data.timings.isha
+            binding.fajrTextView.text = "Fajr   ${it.data.timings.fajr}"
+            binding.sunriseTextView.text = "Sunrise   ${it.data.timings.sunrise}"
+            binding.dhuhrTextView.text = "Dhuhr   ${it.data.timings.dhuhr}"
+            binding.asrTextView.text ="Asr   ${it.data.timings.asr}"
+            binding.maghribTextView.text = "Maghrib   ${it.data.timings.maghrib}"
+            binding.ishaaTextView.text = "Isha'a   ${it.data.timings.isha}"
         })
 
 

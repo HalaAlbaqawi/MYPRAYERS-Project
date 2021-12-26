@@ -18,6 +18,7 @@ import android.view.animation.RotateAnimation
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.location.LocationManagerCompat.getCurrentLocation
 import androidx.fragment.app.activityViewModels
@@ -63,13 +64,15 @@ class QiblaFragment : Fragment(), SensorEventListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "view created")
-
         getQiblatDirection()
+        observers()
+        initData()
     }
 
 
     private fun initData() {
-        mSensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager?
+        mSensorManager =
+            requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager?
     }
 
     override fun onResume() {
@@ -105,16 +108,21 @@ class QiblaFragment : Fragment(), SensorEventListener {
 
 
     fun getQiblatDirection() {
+        Log.d(TAG,"Tes2323t")
 
-        if (ActivityCompat.checkSelfPermission(
+        if (checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
+            Log.d(TAG,"Test")
+
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 // getting the last known or current location
                 val latitude = location.latitude
                 val longitude = location.longitude
+
+                Log.d(TAG,"$latitude,$longitude")
                 qiblaViewModel.getQibla(latitude, longitude)
 
 
@@ -128,6 +136,8 @@ class QiblaFragment : Fragment(), SensorEventListener {
 
 
         } else {
+            Log.d(TAG,"Test1")
+
             requestPermissions(
                 arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
@@ -135,7 +145,6 @@ class QiblaFragment : Fragment(), SensorEventListener {
                 ), LOCATION_PERMISSION_REQ_CODE
             )
         }
-
 
 
     }
@@ -146,11 +155,23 @@ class QiblaFragment : Fragment(), SensorEventListener {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        getQiblatDirection()
+        //getQiblatDirection()
     }
+
     fun observers() {
         qiblaViewModel.qiblaLiveData.observe(viewLifecycleOwner, {
+            val rotateAnimation = RotateAnimation(
+                currentDegree,
+                it.toFloat(),
+                Animation.RELATIVE_TO_SELF,
+                0.5f,
+                Animation.RELATIVE_TO_SELF,
+                0.5f
+            )
+            rotateAnimation.duration = 210
+            rotateAnimation.fillAfter = true
 
+           binding.constraintLayout.startAnimation(rotateAnimation)
 
         })
 

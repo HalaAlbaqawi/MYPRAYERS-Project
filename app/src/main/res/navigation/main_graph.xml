@@ -46,4 +46,9 @@
         android:name="com.example.prayerproject.view.AthkarFragment"
         android:label="fragment_athkar"
         tools:layout="@layout/fragment_athkar" />
+    <fragment
+        android:id="@+id/qiblaFragment"
+        android:name="com.example.prayerproject.view.QiblaFragment"
+        android:label="fragment_qibla"
+        tools:layout="@layout/fragment_qibla" />
 </navigation>

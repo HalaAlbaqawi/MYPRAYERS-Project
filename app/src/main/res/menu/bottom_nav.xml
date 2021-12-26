@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/homeFragment"
@@ -14,6 +15,10 @@
         android:id="@+id/menuFragment"
         android:icon="@drawable/ic__duaa_nav"
         android:title="@string/athkar" />
+    <item
+        android:id="@+id/qiblaFragment"
+        android:icon="@drawable/ic_compass_map_navigation_north_icon"
+        android:title="@string/qibla" />
 
 
 </menu>

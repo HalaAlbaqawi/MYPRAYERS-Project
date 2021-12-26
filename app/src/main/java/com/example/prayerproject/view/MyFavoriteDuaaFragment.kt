@@ -7,9 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.prayerproject.adapter.AthkarAdapter
-import com.example.prayerproject.adapter.MyFavoriteAthkarAdapter
-import com.example.prayerproject.databinding.FragmentAthkarBinding
+import com.example.prayerproject.adapter.MyFavoriteDuaaAdapter
 import com.example.prayerproject.databinding.FragmentMyFavoriteAthkarBinding
 
 
@@ -20,7 +18,7 @@ class MyFavoriteAthkarFragment : Fragment() {
 
 
     private lateinit var binding: FragmentMyFavoriteAthkarBinding
-    private lateinit var myFavoriteAthkarAdapter: MyFavoriteAthkarAdapter
+    private lateinit var myFavoriteAthkarAdapter: MyFavoriteDuaaAdapter
     private val myFavoriteAthkarViewModel: MyFavoriteAthkarViewModel by activityViewModels()
 
 
@@ -47,7 +45,7 @@ class MyFavoriteAthkarFragment : Fragment() {
 
         myFavoriteAthkarViewModel.callData()
 
-        myFavoriteAthkarAdapter = MyFavoriteAthkarAdapter(myFavoriteAthkarViewModel, requireActivity())
+        myFavoriteAthkarAdapter = MyFavoriteDuaaAdapter(myFavoriteAthkarViewModel, requireActivity())
         binding.myathkarRecyclerView.adapter = myFavoriteAthkarAdapter
 
     }
@@ -57,7 +55,7 @@ class MyFavoriteAthkarFragment : Fragment() {
          Log.d(TAG,"$it")
      myFavoriteAthkarAdapter.submitList(it)
      })
-     binding.progressbarMyfav.animate().alpha(0f)
+     binding.progressbarMyfav.animate().alpha(0f).duration = 2000
 
 
     }

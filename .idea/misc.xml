@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/ic__.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/ic__203548_compass_map_navigation_north_icon.xml" value="0.15989583333333332" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/ic__duaa_nav.xml" value="0.17395833333333333" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/ic__home.xml" value="0.17395833333333333" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/ic__menu_nav.xml" value="0.17395833333333333" />
@@ -15,13 +16,14 @@
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/notification_selector.xml" value="0.17395833333333333" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/select.xml" value="0.17395833333333333" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/shape.xml" value="0.16979166666666667" />
+        <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/square.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/activity_login.xml" value="0.1578125" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/activity_register.xml" value="0.1578125" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/activity_splash.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/athkar_item_layout.xml" value="0.22" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/duaa_item_layout.xml" value="0.1578125" />
-        <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_about.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_about.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_athkar.xml" value="0.1578125" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_duaa.xml" value="0.15364583333333334" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_duaa_view.xml" value="0.15364583333333334" />
@@ -31,10 +33,10 @@
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_my_favorite_athkar.xml" value="0.1578125" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_my_favorite_duaa.xml" value="0.1578125" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_prayers_time.xml" value="0.1578125" />
-        <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_qibla.xml" value="0.14375" />
+        <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_qibla.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/myathkar_item_layout.xml" value="0.22" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/myduaa_item_layout.xml" value="0.1578125" />
-        <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/menu/bottom_nav.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/menu/bottom_nav.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/menu/logout_menu.xml" value="0.1578125" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/menu/main_menu.xml" value="0.1578125" />
       </map>
