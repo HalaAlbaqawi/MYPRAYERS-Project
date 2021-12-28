@@ -12,11 +12,12 @@ import com.example.prayerproject.adapter.AthkarAdapter
 import com.example.prayerproject.databinding.FragmentAthkarBinding
 
 private const val TAG = "AthkarFragment"
+
 class AthkarFragment : Fragment() {
 
     private lateinit var binding: FragmentAthkarBinding
     private lateinit var athkarAdapter: AthkarAdapter
-    private val athkarViewModel: AthkarViewModel by activityViewModels ()
+    private val athkarViewModel: AthkarViewModel by activityViewModels()
     private val myFavoriteAthkarViewModel: MyFavoriteAthkarViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +32,6 @@ class AthkarFragment : Fragment() {
     }
 
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -41,19 +40,19 @@ class AthkarFragment : Fragment() {
 
         athkarViewModel.callData()
 
-        athkarAdapter = AthkarAdapter(athkarViewModel, myFavoriteAthkarViewModel)
+        athkarAdapter = AthkarAdapter(athkarViewModel, myFavoriteAthkarViewModel, requireContext())
         binding.athkarRecyclerView.adapter = athkarAdapter
 
 
     }
 
 
-    fun observers(){
-    athkarViewModel.athkarLiveData.observe(viewLifecycleOwner,{
-        athkarAdapter.submitList(it)
-        binding.progressBarAthkar.animate().alpha(0f)
+    fun observers() {
+        athkarViewModel.athkarLiveData.observe(viewLifecycleOwner, {
+            athkarAdapter.submitList(it)
+            binding.progressBarAthkar.animate().alpha(0f)
 
-    })
+        })
 
 
     }

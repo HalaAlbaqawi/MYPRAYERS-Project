@@ -38,6 +38,7 @@ private const val TAG = "QiblaFragment"
 class QiblaFragment : Fragment(), SensorEventListener {
 
     private var currentDegree = 0f
+    private var qibla: Double? = null
     private var mSensorManager: SensorManager? = null
 
     private val qiblaViewModel: QiblaViewModel by activityViewModels()
@@ -108,21 +109,21 @@ class QiblaFragment : Fragment(), SensorEventListener {
 
 
     fun getQiblatDirection() {
-        Log.d(TAG,"Tes2323t")
+        Log.d(TAG, "Tes2323t")
 
         if (checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            Log.d(TAG,"Test")
+            Log.d(TAG, "Test")
 
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 // getting the last known or current location
                 val latitude = location.latitude
                 val longitude = location.longitude
 
-                Log.d(TAG,"$latitude,$longitude")
+                Log.d(TAG, "$latitude,$longitude")
                 qiblaViewModel.getQibla(latitude, longitude)
 
 
@@ -136,7 +137,7 @@ class QiblaFragment : Fragment(), SensorEventListener {
 
 
         } else {
-            Log.d(TAG,"Test1")
+            Log.d(TAG, "Test1")
 
             requestPermissions(
                 arrayOf(
@@ -160,22 +161,26 @@ class QiblaFragment : Fragment(), SensorEventListener {
 
     fun observers() {
         qiblaViewModel.qiblaLiveData.observe(viewLifecycleOwner, {
-            val rotateAnimation = RotateAnimation(
-                currentDegree,
-                it.toFloat(),
-                Animation.RELATIVE_TO_SELF,
-                0.5f,
-                Animation.RELATIVE_TO_SELF,
-                0.5f
-            )
-            rotateAnimation.duration = 210
-            rotateAnimation.fillAfter = true
 
-           binding.constraintLayout.startAnimation(rotateAnimation)
+//            // if statment because if the data came no need to bring it again
+////            if (!qiblaViewModel.loaded) {
+//                qiblaViewModel.loaded = true
+                val rotateAnimation = RotateAnimation(
+                    currentDegree,
+                    it.toFloat(),
+                    Animation.RELATIVE_TO_SELF,
+                    0.5f,
+                    Animation.RELATIVE_TO_SELF,
+                    0.5f
+                )
+                rotateAnimation.duration = 210
+                rotateAnimation.fillAfter = true
+
+                binding.constraintLayout.startAnimation(rotateAnimation)
+        //    }
 
         })
 
+
     }
-
-
 }

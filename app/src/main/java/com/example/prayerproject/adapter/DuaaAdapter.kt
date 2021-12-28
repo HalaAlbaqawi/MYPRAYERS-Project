@@ -1,8 +1,10 @@
 package com.example.prayerproject.adapter
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +18,7 @@ const val TAG = "AthkarAdapter"
 class AthkarAdapter(
     val athkarViewModel: AthkarViewModel,
     val myFavoriteAthkarViewModel: MyFavoriteAthkarViewModel,
+    val context: Context
 ) : RecyclerView.Adapter<AthkarAdapter.AthkarViewHolder>() {
 
 
@@ -51,6 +54,8 @@ class AthkarAdapter(
         val item = differ.currentList[position]
         holder.bind(item)
         holder.binding.addImagebutton.setOnClickListener {
+            Toast.makeText(context, "Dua'a has been added to your list", Toast.LENGTH_SHORT).show()
+
             Log.d(TAG, "inside the add")
             athkarViewModel.addAthkar(item)
 

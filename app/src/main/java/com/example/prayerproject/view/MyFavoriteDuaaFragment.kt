@@ -11,10 +11,9 @@ import com.example.prayerproject.adapter.MyFavoriteDuaaAdapter
 import com.example.prayerproject.databinding.FragmentMyFavoriteAthkarBinding
 
 
-
-
 private const val TAG = "MyFavoriteAthkarFragmen"
-class MyFavoriteAthkarFragment : Fragment() {
+
+class MyFavoriteAthkarFragment() : Fragment() {
 
 
     private lateinit var binding: FragmentMyFavoriteAthkarBinding
@@ -36,27 +35,26 @@ class MyFavoriteAthkarFragment : Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         Log.d(TAG, "my athkar fragment")
         observers()
-
         myFavoriteAthkarViewModel.callData()
 
-        myFavoriteAthkarAdapter = MyFavoriteDuaaAdapter(myFavoriteAthkarViewModel, requireActivity())
+        myFavoriteAthkarAdapter =
+            MyFavoriteDuaaAdapter(myFavoriteAthkarViewModel, requireActivity())
         binding.myathkarRecyclerView.adapter = myFavoriteAthkarAdapter
 
     }
 
-    fun observers(){
-     myFavoriteAthkarViewModel.myAthkarLiveData.observe(viewLifecycleOwner,{
-         Log.d(TAG,"$it")
-     myFavoriteAthkarAdapter.submitList(it)
-     })
-     binding.progressbarMyfav.animate().alpha(0f).duration = 2000
+    fun observers() {
+        myFavoriteAthkarViewModel.myAthkarLiveData.observe(viewLifecycleOwner, {
+            Log.d(TAG, "$it")
+            myFavoriteAthkarAdapter.submitList(it)
+        })
+        binding.progressbarMyfav.animate().alpha(0f).duration = 2000
 
 
     }
-    }
+}

@@ -12,6 +12,7 @@
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/ic_baseline_notifications_24.xml" value="0.17395833333333333" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/ic_duaaa.xml" value="0.17395833333333333" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/ic_group.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/kaaba.xml" value="0.15989583333333332" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/menu_shape.xml" value="0.16979166666666667" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/notification_selector.xml" value="0.17395833333333333" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/drawable/select.xml" value="0.17395833333333333" />
@@ -33,7 +34,7 @@
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_my_favorite_athkar.xml" value="0.1578125" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_my_favorite_duaa.xml" value="0.1578125" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_prayers_time.xml" value="0.1578125" />
-        <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_qibla.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/fragment_qibla.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/myathkar_item_layout.xml" value="0.22" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/layout/myduaa_item_layout.xml" value="0.1578125" />
         <entry key="..\:/Users/albaq/AndroidStudioProjects/PrayerProject/app/src/main/res/menu/bottom_nav.xml" value="0.13333333333333333" />

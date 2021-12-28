@@ -6,6 +6,7 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -52,7 +53,8 @@ class MyFavoriteDuaaAdapter(
         val item = differ.currentList[position]
         holder.bind(item)
         holder.binding.deleteImageButton.setOnClickListener {
-
+            Toast.makeText(context, "Dua'a has been removed from your list", Toast.LENGTH_SHORT)
+                .show()
             val myAthkar = mutableListOf<DuaaModel>()
             myAthkar.addAll(differ.currentList)
             myAthkar.remove(item)

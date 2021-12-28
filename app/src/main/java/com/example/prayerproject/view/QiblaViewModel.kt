@@ -11,11 +11,13 @@ import kotlinx.coroutines.launch
 
 
 private const val TAG = "QiblaViewModel"
-class QiblaViewModel: ViewModel() {
+
+class QiblaViewModel : ViewModel() {
 
     val qiblaLiveData = MutableLiveData<Double>()
     val qiblaErorrLiveData = MutableLiveData<String>()
     val apiRepo = ApiServiceQiblaRepository.get()
+    var loaded = false
 
 
     fun getQibla(lat: Double, lon: Double) {
@@ -24,7 +26,6 @@ class QiblaViewModel: ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = apiRepo.getQiblaDirection(lat, lon)
-
                 response.body()?.run {
                     qiblaLiveData.postValue(data.direction)
                     Log.d(TAG, this.toString())

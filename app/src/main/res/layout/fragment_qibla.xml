@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
-        android:src="@drawable/img_1"
+        android:src="@drawable/newcompasss"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="10:10"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -33,14 +33,15 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/kaaba"
+            android:layout_width="53dp"
+            android:layout_height="355dp"
+            android:src="@drawable/comarrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.474"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.31" />
+            app:layout_constraintVertical_bias="0.356" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

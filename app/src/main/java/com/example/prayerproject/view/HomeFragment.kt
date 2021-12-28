@@ -134,7 +134,7 @@ class HomeFragment : Fragment() {
         notificationManager.notify(1234, builder.build())
     }
 
-// to set the timer for notification
+    // to set the timer for notification
     fun time() {
         val timeUp = object : CountDownTimer(2000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
@@ -147,7 +147,7 @@ class HomeFragment : Fragment() {
             }
 
         }
-         timeUp.start()
+        timeUp.start()
 
     }
 
