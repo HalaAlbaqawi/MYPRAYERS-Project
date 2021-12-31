@@ -12,7 +12,6 @@ private const val BASE_URL = "https://61ae0fdca7c7f3001786f5c4.mockapi.io"
 class ApiServiceAthkarRepository(val context: Context) {
 
 
-
     private val retrofitService = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
@@ -22,22 +21,25 @@ class ApiServiceAthkarRepository(val context: Context) {
     private val retrofitApi = retrofitService.create(DuaaApi::class.java)
 
 
+    suspend fun getAthkar() = retrofitApi.getAthkar()
+    suspend fun getMyAthkar(userid: String) = retrofitApi.getMyAthkar(userid)
+    suspend fun addAthkar(athkarModel: DuaaModel) = retrofitApi.addAthkar(athkarModel)
+    suspend fun editAthkar(athkarModel: DuaaModel) =
+        retrofitApi.editAthkar(athkarModel.id, athkarModel)
 
-   suspend fun getAthkar() = retrofitApi.getAthkar()
-   suspend fun getMyAthkar(userid: String) = retrofitApi.getMyAthkar(userid)
-   suspend fun addAthkar(athkarModel: DuaaModel)= retrofitApi.addAthkar(athkarModel)
-   suspend fun editAthkar(athkarModel: DuaaModel)= retrofitApi.editAthkar(athkarModel.id,athkarModel)
-   suspend fun deleteAthkar(id: String)=retrofitApi.deleteAthkar(id)
+    suspend fun deleteAthkar(id: String) = retrofitApi.deleteAthkar(id)
 
-    companion object{
+    companion object {
         private var instance: ApiServiceAthkarRepository? = null
+
         // design pattern
-        fun init (conext: Context){
+        fun init(conext: Context) {
 
             if (instance == null)
                 instance = ApiServiceAthkarRepository(conext)
 
         }
+
         fun get(): ApiServiceAthkarRepository {
 
             return instance ?: throw Exception("ApiServiceRepository must be initialized")

@@ -11,7 +11,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 private const val TAG = "HomeViewModel"
-class HomeViewModel: ViewModel() {
+
+class HomeViewModel : ViewModel() {
 
     private val apiRepo = ApiServiceRepository.get()
 
@@ -19,21 +20,21 @@ class HomeViewModel: ViewModel() {
     val homeErrorLiveData = MutableLiveData<String>()
 
 
-    fun callData(lat: Double, long: Double){
-     viewModelScope.launch(Dispatchers.IO) {
-         try {
-             val response = apiRepo.getData(lat, long)
+    fun callData(lat: Double, long: Double) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response = apiRepo.getData(lat, long)
 
-                 response.body()?.run {
-                     homeLiveData.postValue(this)
-                     Log.d(TAG,this.toString())
-                 }
-             Log.d(TAG, response.message())
-         } catch (e:Exception){
-             Log.d(TAG, e.message.toString())
-             homeErrorLiveData.postValue(e.message.toString())
-         }
-     }
+                response.body()?.run {
+                    homeLiveData.postValue(this)
+                    Log.d(TAG, this.toString())
+                }
+                Log.d(TAG, response.message())
+            } catch (e: Exception) {
+                Log.d(TAG, e.message.toString())
+                homeErrorLiveData.postValue(e.message.toString())
+            }
+        }
 
     }
 }

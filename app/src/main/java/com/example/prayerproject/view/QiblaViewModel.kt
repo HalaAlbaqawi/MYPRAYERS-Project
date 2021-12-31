@@ -17,7 +17,6 @@ class QiblaViewModel : ViewModel() {
     val qiblaLiveData = MutableLiveData<Double>()
     val qiblaErorrLiveData = MutableLiveData<String>()
     val apiRepo = ApiServiceQiblaRepository.get()
-    var loaded = false
 
 
     fun getQibla(lat: Double, lon: Double) {

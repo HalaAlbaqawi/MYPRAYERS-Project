@@ -114,7 +114,7 @@ class PrayersTimeFragment : Fragment() {
             binding.fajrTextView.text = "Fajr   ${it.data.timings.fajr}"
             binding.sunriseTextView.text = "Sunrise   ${it.data.timings.sunrise}"
             binding.dhuhrTextView.text = "Dhuhr   ${it.data.timings.dhuhr}"
-            binding.asrTextView.text ="Asr   ${it.data.timings.asr}"
+            binding.asrTextView.text = "Asr   ${it.data.timings.asr}"
             binding.maghribTextView.text = "Maghrib   ${it.data.timings.maghrib}"
             binding.ishaaTextView.text = "Isha'a   ${it.data.timings.isha}"
         })

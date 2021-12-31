@@ -37,10 +37,11 @@ class AboutFragment : Fragment() {
         button.setOnClickListener {
             //implicit intent to open website
             try {
-                val websiteIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://aladhan.com/about"))
+                val websiteIntent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse("https://aladhan.com/about"))
                 startActivity(websiteIntent)
 
-            }catch (e:ActivityNotFoundException){
+            } catch (e: ActivityNotFoundException) {
                 Toast.makeText(
                     requireActivity(),
                     "No app can satisfy this request", Toast.LENGTH_SHORT

@@ -8,12 +8,13 @@ import retrofit2.http.*
 interface DuaaApi {
 
     @GET("/Duaa")
-    suspend fun getAthkar (
+    suspend fun getAthkar(
     ): Response<List<DuaaModel>>
 
 
     @GET("/myduaa")
-    suspend fun getMyAthkar ( @Query("userid") userid: String
+    suspend fun getMyAthkar(
+        @Query("userid") userid: String
     ): Response<List<DuaaModel>>
 
 
@@ -22,8 +23,10 @@ interface DuaaApi {
 
 
     @PUT("/myduaa/{id}")
-    suspend fun editAthkar(@Path("id") id: String,
-    @Body DuaaBody: DuaaModel): Response<ResponseBody>
+    suspend fun editAthkar(
+        @Path("id") id: String,
+        @Body DuaaBody: DuaaModel
+    ): Response<ResponseBody>
 
 
     @DELETE("/myduaa/{id}")

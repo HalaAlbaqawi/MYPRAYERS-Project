@@ -156,28 +156,23 @@ class QiblaFragment : Fragment(), SensorEventListener {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        //getQiblatDirection()
     }
 
     fun observers() {
         qiblaViewModel.qiblaLiveData.observe(viewLifecycleOwner, {
 
-//            // if statment because if the data came no need to bring it again
-////            if (!qiblaViewModel.loaded) {
-//                qiblaViewModel.loaded = true
-                val rotateAnimation = RotateAnimation(
-                    currentDegree,
-                    it.toFloat(),
-                    Animation.RELATIVE_TO_SELF,
-                    0.5f,
-                    Animation.RELATIVE_TO_SELF,
-                    0.5f
-                )
-                rotateAnimation.duration = 210
-                rotateAnimation.fillAfter = true
+            val rotateAnimation = RotateAnimation(
+                currentDegree,
+                it.toFloat(),
+                Animation.RELATIVE_TO_SELF,
+                0.5f,
+                Animation.RELATIVE_TO_SELF,
+                0.5f
+            )
+            rotateAnimation.duration = 210
+            rotateAnimation.fillAfter = true
 
-                binding.constraintLayout.startAnimation(rotateAnimation)
-        //    }
+            binding.constraintLayout.startAnimation(rotateAnimation)
 
         })
 

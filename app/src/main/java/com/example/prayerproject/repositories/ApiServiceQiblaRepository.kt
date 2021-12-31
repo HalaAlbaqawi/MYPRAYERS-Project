@@ -13,7 +13,7 @@ class ApiServiceQiblaRepository(val context: Context) {
         .build()
     val qiblaApi = retrofit.create(QiblaApi::class.java)
 
-    suspend fun getQiblaDirection(lat: Double, lon: Double) = qiblaApi.getQiblaDirection(lat,lon)
+    suspend fun getQiblaDirection(lat: Double, lon: Double) = qiblaApi.getQiblaDirection(lat, lon)
 
     companion object {
         private var instance: ApiServiceQiblaRepository? = null

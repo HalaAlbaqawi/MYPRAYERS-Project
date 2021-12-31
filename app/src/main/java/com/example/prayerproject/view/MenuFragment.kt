@@ -34,7 +34,7 @@ class MenuFragment : Fragment() {
 
         binding.duaaCardView.setOnClickListener {
 
-         findNavController().navigate(R.id.action_menuFragment_to_athkarFragment)
+            findNavController().navigate(R.id.action_menuFragment_to_athkarFragment)
         }
 
         binding.duaaListCardView.setOnClickListener {

@@ -8,14 +8,14 @@ import retrofit2.http.Query
 interface PrayersApi {
 
 
-@GET("/v1/timings?method=4")
-suspend fun getData (
+    @GET("/v1/timings?method=4")
+    suspend fun getData(
 
-    @Query("latitude") lat: Double,
-    @Query("longitude") lon: Double,
+        @Query("latitude") lat: Double,
+        @Query("longitude") lon: Double,
 
 
-    ): Response<PrayerModel>
+        ): Response<PrayerModel>
 
 
 }
