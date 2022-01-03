@@ -98,24 +98,23 @@ class HomeFragment : Fragment() {
         binding.gregorianMonthTextView.text = monthName
         Log.d(TAG, monthName)
 
-
         val formatter2 = DateTimeFormatter.ofPattern("MMMM")
         val formatted1 = formatter2.format(hijrahDate)
         binding.hijriMonthTextView.text = formatted1
+
         Log.d(TAG, formatted1)
 
     }
 
     fun notification() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
             notificationChannel = NotificationChannel(
                 notification_id,
                 notificationDescription,
                 NotificationManager.IMPORTANCE_HIGH
+
             )
-
-
-
             notificationChannel.enableLights(true)
             notificationChannel.enableVibration(true)
             notificationManager.createNotificationChannel(notificationChannel)
@@ -127,7 +126,7 @@ class HomeFragment : Fragment() {
                 .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.myprayers))
 
         } else {
-            builder = Notification.Builder(requireActivity())
+            builder = Notification.Builder(requireActivity()) 
                 .setSmallIcon(R.drawable.myprayers)
                 .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.myprayers))
         }

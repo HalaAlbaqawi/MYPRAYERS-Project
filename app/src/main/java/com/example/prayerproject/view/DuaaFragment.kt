@@ -47,6 +47,7 @@ class AthkarFragment : Fragment() {
     }
 
 
+
     fun observers() {
         athkarViewModel.athkarLiveData.observe(viewLifecycleOwner, {
             athkarAdapter.submitList(it)

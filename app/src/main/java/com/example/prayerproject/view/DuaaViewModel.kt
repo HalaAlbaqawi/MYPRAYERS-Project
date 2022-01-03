@@ -37,9 +37,7 @@ class AthkarViewModel : ViewModel() {
             }
         }
 
-
     }
-
     fun addAthkar(athkarModel: DuaaModel) {
 
         Log.d(TAG, "check")
@@ -57,11 +55,14 @@ class AthkarViewModel : ViewModel() {
                         LiveData.postValue("Successful")
                     }
                 }
+
                 Log.d(TAG, response.message())
 
             } catch (e: Exception) {
                 Log.d(TAG, e.message.toString())
                 LiveData.postValue("UnSucessful")
+
+
             }
         }
     }

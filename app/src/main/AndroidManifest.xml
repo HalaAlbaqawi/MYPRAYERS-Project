@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.prayerproject">
 
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -10,9 +9,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PrayerProject">
+        android:theme="@style/Theme.PrayerProject"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".main.MainActivity"
+            android:exported="false" />
         <activity
             android:name=".main.SplashActivity"
             android:exported="true"
@@ -26,16 +28,11 @@
         <activity
             android:name=".main.RegisterActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".main.LoginActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".main.MainActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
-        </activity>
-    </application>
+            android:screenOrientation="portrait" />
 
+</application>
 </manifest>

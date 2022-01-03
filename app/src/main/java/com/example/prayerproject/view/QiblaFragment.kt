@@ -146,8 +146,6 @@ class QiblaFragment : Fragment(), SensorEventListener {
                 ), LOCATION_PERMISSION_REQ_CODE
             )
         }
-
-
     }
 
     override fun onRequestPermissionsResult(
@@ -156,6 +154,7 @@ class QiblaFragment : Fragment(), SensorEventListener {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        //getQiblatDirection()
     }
 
     fun observers() {
@@ -173,9 +172,7 @@ class QiblaFragment : Fragment(), SensorEventListener {
             rotateAnimation.fillAfter = true
 
             binding.constraintLayout.startAnimation(rotateAnimation)
-
         })
-
 
     }
 }

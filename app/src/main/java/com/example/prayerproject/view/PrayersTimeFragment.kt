@@ -95,7 +95,6 @@ class PrayersTimeFragment : Fragment() {
                 ), LOCATION_PERMISSION_REQ_CODE
             )
         }
-
     }
 
     override fun onRequestPermissionsResult(
@@ -108,6 +107,7 @@ class PrayersTimeFragment : Fragment() {
     }
 
 
+
     fun observers() {
         prayersTimeViewModel.prayerLiveData.observe(viewLifecycleOwner, {
             binding.progressBarPrayerTime.animate().alpha(0f)
@@ -118,7 +118,6 @@ class PrayersTimeFragment : Fragment() {
             binding.maghribTextView.text = "Maghrib   ${it.data.timings.maghrib}"
             binding.ishaaTextView.text = "Isha'a   ${it.data.timings.isha}"
         })
-
 
     }
 }
