@@ -67,6 +67,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        observers()
 
         val formatter = DateTimeFormatter.ofPattern("hh:mm a").format(LocalTime.now())
         binding.timeTextView.text = formatter.toString()
@@ -148,6 +149,11 @@ class HomeFragment : Fragment() {
         }
         timeUp.start()
 
+    }
+    fun observers(){
+        homeViewModel.homeLiveData.observe(viewLifecycleOwner,{
+            binding.homeProgressBar.animate().alpha(0f)
+        })
     }
 
 }

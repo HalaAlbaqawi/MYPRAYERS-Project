@@ -70,12 +70,12 @@ class PrayersTimeFragment : Fragment() {
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
-            // getting prayer times based on user location
+            // getting prayers times based on user location
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 // getting the last known or current location
                 val latitude = location.latitude
                 val longitude = location.longitude
-                Log.d("aaaaa", "$latitude,$longitude")
+                Log.d("prayers times", "$latitude,$longitude")
                 prayersTimeViewModel.callData(latitude, longitude)
 
 

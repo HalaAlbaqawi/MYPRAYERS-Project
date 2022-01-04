@@ -8,13 +8,13 @@ import android.os.IBinder
 import androidx.annotation.RequiresApi
 import com.example.prayerproject.R
 import com.example.prayerproject.main.MainActivity
+import com.example.prayerproject.view.PrayersTimeViewModel
 
 
 const val CHANNEL_ID = "your id"
 const val ADHAN_NOTIFICATION_ID = 123
 
 class MyService : Service(){
-
     private lateinit var adhanPlayer: MediaPlayer
 
     override fun onBind(intent: Intent?): IBinder? {
@@ -86,5 +86,7 @@ class MyService : Service(){
         adhanPlayer.setVolume(100f,100f)
         adhanPlayer.start()
     }
+
+
 
 }

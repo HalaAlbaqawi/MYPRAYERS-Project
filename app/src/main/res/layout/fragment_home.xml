@@ -5,10 +5,11 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/moosque"
+    android:background="@drawable/i"
     tools:context=".view.HomeFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -33,6 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/ruluko"
                 android:gravity="top"
                 android:text="@string/hijri"
                 android:textColor="@color/white"
@@ -43,6 +45,7 @@
                 android:id="@+id/hijri_date_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/ruluko"
                 android:text="TextView"
                 android:textColor="@color/white" />
 
@@ -50,6 +53,7 @@
                 android:id="@+id/hijri_month_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/ruluko"
                 android:gravity="center"
                 android:text="TextView"
                 android:textColor="@color/white" />
@@ -67,6 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/ruluko"
                 android:text="@string/gregorian"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -76,6 +81,7 @@
                 android:id="@+id/gregorian_date_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/ruluko"
                 android:text="TextView"
                 android:textColor="@color/white" />
 
@@ -83,6 +89,7 @@
                 android:id="@+id/gregorian_month_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/ruluko"
                 android:gravity="center"
                 android:text="TextView"
                 android:textColor="@color/white" />
@@ -96,9 +103,20 @@
         android:layout_height="70dp"
         android:layout_marginTop="44dp"
         android:background="@drawable/shape"
+        android:fontFamily="@font/ruluko"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/home_progressBar"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

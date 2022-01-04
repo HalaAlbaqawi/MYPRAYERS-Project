@@ -10,13 +10,13 @@ import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.prayerproject.databinding.MyathkarItemLayoutBinding
+import com.example.prayerproject.databinding.MyduaaItemLayoutBinding
 import com.example.prayerproject.model.DuaaModel
-import com.example.prayerproject.view.MyFavoriteAthkarViewModel
+import com.example.prayerproject.view.MyFavoriteDuaaViewModel
 
 
 class MyFavoriteDuaaAdapter(
-    val myFavoriteAthkarViewModel: MyFavoriteAthkarViewModel,
+    val myFavoriteAthkarViewModel: MyFavoriteDuaaViewModel,
     val context: Context
 ) : RecyclerView.Adapter<MyFavoriteDuaaAdapter.MyFavoriteAthkarViewHolder>() {
 
@@ -44,7 +44,7 @@ class MyFavoriteDuaaAdapter(
     ): MyFavoriteAthkarViewHolder {
 
         val binding =
-            MyathkarItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            MyduaaItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyFavoriteAthkarViewHolder(binding)
     }
 
@@ -106,7 +106,7 @@ class MyFavoriteDuaaAdapter(
         return differ.currentList.size
     }
 
-    class MyFavoriteAthkarViewHolder(val binding: MyathkarItemLayoutBinding) :
+    class MyFavoriteAthkarViewHolder(val binding: MyduaaItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(athkarModel: DuaaModel) {
 

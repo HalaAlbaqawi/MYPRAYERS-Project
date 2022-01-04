@@ -8,18 +8,18 @@ import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.prayerproject.databinding.AthkarItemLayoutBinding
+import com.example.prayerproject.databinding.DuaaItemLayoutBinding
 import com.example.prayerproject.model.DuaaModel
-import com.example.prayerproject.view.AthkarViewModel
-import com.example.prayerproject.view.MyFavoriteAthkarViewModel
+import com.example.prayerproject.view.DuaaViewModel
+import com.example.prayerproject.view.MyFavoriteDuaaViewModel
 
-const val TAG = "AthkarAdapter"
+const val TAG = "DuaaAdapter"
 
-class AthkarAdapter(
-    val athkarViewModel: AthkarViewModel,
-    val myFavoriteAthkarViewModel: MyFavoriteAthkarViewModel,
+class DuaaAdapter(
+    val athkarViewModel: DuaaViewModel,
+    val myFavoriteDuaaViewModel: MyFavoriteDuaaViewModel,
     val context: Context
-) : RecyclerView.Adapter<AthkarAdapter.AthkarViewHolder>() {
+) : RecyclerView.Adapter<DuaaAdapter.AthkarViewHolder>() {
 
 
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DuaaModel>() {
@@ -45,7 +45,7 @@ class AthkarAdapter(
     ): AthkarViewHolder {
 
         val binding =
-            AthkarItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            DuaaItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return AthkarViewHolder(binding, athkarViewModel)
     }
 
@@ -70,8 +70,8 @@ class AthkarAdapter(
     }
 
     class AthkarViewHolder(
-        val binding: AthkarItemLayoutBinding,
-        val athkarViewModel: AthkarViewModel,
+        val binding: DuaaItemLayoutBinding,
+        val athkarViewModel: DuaaViewModel,
     ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(athkarModel: DuaaModel) {

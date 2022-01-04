@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.prayerproject.adapter.MyFavoriteDuaaAdapter
-import com.example.prayerproject.databinding.FragmentMyFavoriteAthkarBinding
+import com.example.prayerproject.databinding.FragmentMyFavoriteDuaaBinding
 
 
 private const val TAG = "MyFavoriteAthkarFragmen"
@@ -16,9 +16,9 @@ private const val TAG = "MyFavoriteAthkarFragmen"
 class MyFavoriteAthkarFragment() : Fragment() {
 
 
-    private lateinit var binding: FragmentMyFavoriteAthkarBinding
+    private lateinit var binding: FragmentMyFavoriteDuaaBinding
     private lateinit var myFavoriteAthkarAdapter: MyFavoriteDuaaAdapter
-    private val myFavoriteAthkarViewModel: MyFavoriteAthkarViewModel by activityViewModels()
+    private val myFavoriteAthkarViewModel: MyFavoriteDuaaViewModel by activityViewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +30,7 @@ class MyFavoriteAthkarFragment() : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMyFavoriteAthkarBinding.inflate(inflater, container, false)
+        binding = FragmentMyFavoriteDuaaBinding.inflate(inflater, container, false)
         return binding.root
     }
 

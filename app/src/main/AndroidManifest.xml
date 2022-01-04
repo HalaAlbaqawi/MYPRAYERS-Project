@@ -34,5 +34,9 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
-</application>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+    </application>
 </manifest>

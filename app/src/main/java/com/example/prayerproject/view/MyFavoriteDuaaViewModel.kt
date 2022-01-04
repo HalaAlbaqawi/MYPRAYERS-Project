@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "MyFavoriteAthkarViewMod"
 
-class MyFavoriteAthkarViewModel : ViewModel() {
+class MyFavoriteDuaaViewModel : ViewModel() {
 
 
     private val apiRepo = ApiServiceAthkarRepository.get()

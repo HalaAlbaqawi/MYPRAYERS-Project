@@ -11,4 +11,8 @@
     <string name="gregorian">Gregorian</string>
     <string name="AboutMyPrayers">About the Al Adhan Service</string>
     <string name="qibla">Qibla</string>
+    <string name="required">Required</string>
+    <string name="email">Email</string>
+    <string name="Password">password</string>
+    <string name="register">Register</string>
 </resources>

@@ -12,12 +12,12 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "AthkarViewModel"
 
-class AthkarViewModel : ViewModel() {
+class DuaaViewModel : ViewModel() {
 
     private val apiRepo = ApiServiceAthkarRepository.get()
-    val athkarLiveData = MutableLiveData<List<DuaaModel>>()
+    val duaaLiveData = MutableLiveData<List<DuaaModel>>()
     val LiveData = MutableLiveData<String>()
-    val athkarErrorLiveData = MutableLiveData<String>()
+    val duaaErrorLiveData = MutableLiveData<String>()
 
 
     fun callData() {
@@ -27,13 +27,13 @@ class AthkarViewModel : ViewModel() {
                 val response = apiRepo.getAthkar()
 
                 response.body()?.run {
-                    athkarLiveData.postValue(this)
+                    duaaLiveData.postValue(this)
                     Log.d(TAG, this.toString())
                 }
                 Log.d(TAG, response.message())
             } catch (e: Exception) {
                 Log.d(TAG, e.message.toString())
-                athkarErrorLiveData.postValue(e.message.toString())
+                duaaErrorLiveData.postValue(e.message.toString())
             }
         }
 

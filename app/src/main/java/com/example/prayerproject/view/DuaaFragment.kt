@@ -1,6 +1,6 @@
 package com.example.prayerproject.view
 
-import android.content.Context
+
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,17 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.prayerproject.adapter.AthkarAdapter
-import com.example.prayerproject.databinding.FragmentAthkarBinding
+import com.example.prayerproject.adapter.DuaaAdapter
+import com.example.prayerproject.databinding.FragmentDuaaBinding
 
-private const val TAG = "AthkarFragment"
+private const val TAG = "DuaaFragment"
 
 class AthkarFragment : Fragment() {
 
-    private lateinit var binding: FragmentAthkarBinding
-    private lateinit var athkarAdapter: AthkarAdapter
-    private val athkarViewModel: AthkarViewModel by activityViewModels()
-    private val myFavoriteAthkarViewModel: MyFavoriteAthkarViewModel by activityViewModels()
+    private lateinit var binding: FragmentDuaaBinding
+    private lateinit var duaaAdapter: DuaaAdapter
+    private val duaaViewModel: DuaaViewModel by activityViewModels()
+    private val myFavoriteAthkarViewModel: MyFavoriteDuaaViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -27,7 +27,7 @@ class AthkarFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAthkarBinding.inflate(inflater, container, false)
+        binding = FragmentDuaaBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -38,10 +38,10 @@ class AthkarFragment : Fragment() {
         Log.d(TAG, "athkar fragment")
         observers()
 
-        athkarViewModel.callData()
+        duaaViewModel.callData()
 
-        athkarAdapter = AthkarAdapter(athkarViewModel, myFavoriteAthkarViewModel, requireContext())
-        binding.athkarRecyclerView.adapter = athkarAdapter
+        duaaAdapter = DuaaAdapter(duaaViewModel, myFavoriteAthkarViewModel, requireContext())
+        binding.athkarRecyclerView.adapter = duaaAdapter
 
 
     }
@@ -49,9 +49,9 @@ class AthkarFragment : Fragment() {
 
 
     fun observers() {
-        athkarViewModel.athkarLiveData.observe(viewLifecycleOwner, {
-            athkarAdapter.submitList(it)
-            binding.progressBarAthkar.animate().alpha(0f)
+        duaaViewModel.duaaLiveData.observe(viewLifecycleOwner, {
+            duaaAdapter.submitList(it)
+            binding.progressBarDuaa.animate().alpha(0f)
 
         })
 
