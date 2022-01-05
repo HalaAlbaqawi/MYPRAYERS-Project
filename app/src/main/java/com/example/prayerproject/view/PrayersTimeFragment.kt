@@ -107,7 +107,6 @@ class PrayersTimeFragment : Fragment() {
     }
 
 
-
     fun observers() {
         prayersTimeViewModel.prayerLiveData.observe(viewLifecycleOwner, {
             binding.progressBarPrayerTime.animate().alpha(0f)

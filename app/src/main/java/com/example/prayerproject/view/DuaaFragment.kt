@@ -51,7 +51,7 @@ class AthkarFragment : Fragment() {
     fun observers() {
         duaaViewModel.duaaLiveData.observe(viewLifecycleOwner, {
             duaaAdapter.submitList(it)
-            binding.progressBarDuaa.animate().alpha(0f)
+            binding.progressBarAthkar.animate().alpha(0f)
 
         })
 

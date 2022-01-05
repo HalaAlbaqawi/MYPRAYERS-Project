@@ -79,7 +79,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-
+    // Email and Password Validation
     private fun submitForm() {
         binding.emailContainer.helperText = validEmail()
         binding.passwordContainer.helperText = validPassword()

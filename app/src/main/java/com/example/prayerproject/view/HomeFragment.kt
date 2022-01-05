@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.BitmapFactory
 import android.icu.text.SimpleDateFormat
 import android.os.Build
@@ -18,7 +19,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.prayerproject.R
 import com.example.prayerproject.databinding.FragmentHomeBinding
-import com.example.prayerproject.main.LoginActivity
+
+import com.example.prayerproject.main.SHARED_PREF_FILE
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.chrono.HijrahDate
@@ -27,7 +29,9 @@ import java.util.*
 
 private lateinit var binding: FragmentHomeBinding
 private const val TAG = "HomeFragment"
-
+private lateinit var sharedPref: SharedPreferences
+private lateinit var sharedPrefEditor: SharedPreferences.Editor
+var SHARED_PREF_FILE = "pref"
 lateinit var notificationChannel: NotificationChannel
 private val notification_id = "notification"
 lateinit var builder: Notification.Builder
@@ -66,8 +70,8 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.homeProgressBar.animate().alpha(0f)
 
-        observers()
 
         val formatter = DateTimeFormatter.ofPattern("hh:mm a").format(LocalTime.now())
         binding.timeTextView.text = formatter.toString()
@@ -107,6 +111,7 @@ class HomeFragment : Fragment() {
 
     }
 
+    // Setting the Notification
     fun notification() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
@@ -127,7 +132,7 @@ class HomeFragment : Fragment() {
                 .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.myprayers))
 
         } else {
-            builder = Notification.Builder(requireActivity()) 
+            builder = Notification.Builder(requireActivity())
                 .setSmallIcon(R.drawable.myprayers)
                 .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.myprayers))
         }
@@ -141,8 +146,20 @@ class HomeFragment : Fragment() {
             }
 
             override fun onFinish() {
+                sharedPref =
+                    requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
+                if (sharedPref.getBoolean("notifi", true)) {
+                    notification()
+                    sharedPref = requireActivity().getSharedPreferences(
+                        SHARED_PREF_FILE,
+                        Context.MODE_PRIVATE
+                    )
+                    sharedPrefEditor = sharedPref.edit()
+                    sharedPrefEditor.putBoolean("notifi", false)
+                    sharedPrefEditor.commit()
 
-                notification()
+                }
+
 
             }
 
@@ -150,10 +167,6 @@ class HomeFragment : Fragment() {
         timeUp.start()
 
     }
-    fun observers(){
-        homeViewModel.homeLiveData.observe(viewLifecycleOwner,{
-            binding.homeProgressBar.animate().alpha(0f)
-        })
-    }
+
 
 }
