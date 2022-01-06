@@ -73,10 +73,14 @@ class PrayersTimeFragment : Fragment() {
             // getting prayers times based on user location
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 // getting the last known or current location
-                val latitude = location.latitude
-                val longitude = location.longitude
-                Log.d("prayers times", "$latitude,$longitude")
-                prayersTimeViewModel.callData(latitude, longitude)
+
+                location?.let {
+                    val latitude = location.latitude
+                    val longitude = location.longitude
+                    Log.d("prayers times", "$latitude,$longitude")
+                    prayersTimeViewModel.callData(latitude, longitude)
+                }
+
 
 
             }

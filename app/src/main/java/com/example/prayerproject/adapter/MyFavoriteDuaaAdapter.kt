@@ -16,7 +16,7 @@ import com.example.prayerproject.view.MyFavoriteDuaaViewModel
 
 
 class MyFavoriteDuaaAdapter(
-    val myFavoriteAthkarViewModel: MyFavoriteDuaaViewModel,
+    val myFavoriteDuaaViewModel: MyFavoriteDuaaViewModel,
     val context: Context
 ) : RecyclerView.Adapter<MyFavoriteDuaaAdapter.MyFavoriteAthkarViewHolder>() {
 
@@ -24,7 +24,7 @@ class MyFavoriteDuaaAdapter(
 
         override fun areItemsTheSame(oldItem: DuaaModel, newItem: DuaaModel): Boolean {
             // we should use id but it could be any thing unique like username
-            return oldItem.id == newItem.id
+            return oldItem.title == newItem.title
         }
 
         override fun areContentsTheSame(oldItem: DuaaModel, newItem: DuaaModel): Boolean {
@@ -45,7 +45,7 @@ class MyFavoriteDuaaAdapter(
 
         val binding =
             MyduaaItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyFavoriteAthkarViewHolder(binding)
+        return MyFavoriteAthkarViewHolder(binding,myFavoriteDuaaViewModel)
     }
 
 
@@ -58,20 +58,20 @@ class MyFavoriteDuaaAdapter(
             val myAthkar = mutableListOf<DuaaModel>()
             myAthkar.addAll(differ.currentList)
             myAthkar.remove(item)
-            myFavoriteAthkarViewModel.deleteAthkar(item.id)
+            myFavoriteDuaaViewModel.deleteAthkar(item.id)
             differ.submitList(myAthkar)
 
         }
 
 
-        holder.binding.toggleButton.setOnClickListener {
+        holder.binding.alarmToggleButton.setOnClickListener {
             Log.d(TAG, "inside the edit")
-            if (holder.binding.toggleButton.isChecked) {
+            if (holder.binding.alarmToggleButton.isChecked) {
 
                 timePicker(item)
             } else {
                 item.isNotify = false
-                myFavoriteAthkarViewModel.editAthkar(item)
+                myFavoriteDuaaViewModel.editAthkar(item)
             }
         }
     }
@@ -86,8 +86,9 @@ class MyFavoriteDuaaAdapter(
             Log.d("TimePicker", timeSet)
             item.isNotify = true
             item.time = timeSet
+            item.alarm = true
 
-            myFavoriteAthkarViewModel.editAthkar(item)
+            myFavoriteDuaaViewModel.editAthkar(item)
 
         }
         val time = TimePickerDialog(
@@ -106,18 +107,21 @@ class MyFavoriteDuaaAdapter(
         return differ.currentList.size
     }
 
-    class MyFavoriteAthkarViewHolder(val binding: MyduaaItemLayoutBinding) :
+    class MyFavoriteAthkarViewHolder(val binding: MyduaaItemLayoutBinding,
+    val myFavoriteDuaaViewModel: MyFavoriteDuaaViewModel) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(athkarModel: DuaaModel) {
 
             binding.athkarTextview.text = athkarModel.duaa
             binding.titleTextview.text = athkarModel.title
+            binding.alarmToggleButton.isChecked = athkarModel.alarm
             val deleteImageButton = binding.deleteImageButton
-            val notificationToggleButton = binding.toggleButton
+            val alarmToggleButton = binding.alarmToggleButton
 
+
+            }
 
         }
 
 
     }
-}

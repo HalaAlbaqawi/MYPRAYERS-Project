@@ -55,6 +55,7 @@ class MyFavoriteAthkarFragment() : Fragment() {
         })
         binding.progressbarMyfav.animate().alpha(0f).duration = 2000
 
-
     }
+
+
 }

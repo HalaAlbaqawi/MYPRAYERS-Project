@@ -15,6 +15,9 @@ data class DuaaModel(
     @SerializedName("isNotify")
     var isNotify: Boolean = false,
     @SerializedName("time")
-    var time: String = ""
+    var time: String = "",
+    @SerializedName("alarm")
+    var alarm: Boolean = false
+
 
 )
