@@ -3,3 +3,21 @@
 
 ## Description : 
  It's an Islamic App to get accurate prayer times, Qibla Finder to find accurate qibla direction, Hijri and Gregorian Calendar to track Islamic events, Dua'a.
+
+
+
+
+
+## 1- List of technologies:
+* Android Studio
+
+* Figma
+
+
+## 2- Link to wirefarmes and user Stories:
+ **Wireframes**:
+ 
+[Figma](https://www.figma.com/file/JlRkHD4eM5GXuG4DIdhD5E/Prayer-App?node-id=2%3A8)
+
+**User Stories**: 
+
