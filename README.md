@@ -23,4 +23,41 @@
 
 As a user I want to be able to view prayer times easily.
 
-As a user I want to be able to see Qibla direction everwhere I go.
+As a user I want to be able to check both Hijri and Gregorian Calender.
+
+As a user I want to be able to view Qibla direction everwhere I go.
+
+As a user I want to be able to read daily Dua'a.
+
+As a user I want to be able to creat my own Dua'a List.
+
+As a user I want to be able to know about the applictaion more. 
+
+<hr>
+## 3- My Development Process:
+
+*Designing :  I used figma to Design my app as a sketch.
+
+*Developing : I transformed my sketch into a design in Android Studio, then I started to writting my code and my Functions.
+
+*Testing : I started to testing my app by using developer Tools such as: 1- Debugging the code, 2-Searching, 3- Brain Storming.
+
+## 4- Unsolved problems:
+
+
+**Libraries Used**: 
+
+-Lifecycles
+-LiveData
+-Navigation
+-ViewModel
+-UI
+-Fragment
+-Layout
+-Retrofit
+-MVVM Architecture
+-DiffUtil
+-SharedPrefrence
+-HTTP Request
+-Api
+-Coroutines
