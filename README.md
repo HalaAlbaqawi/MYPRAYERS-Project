@@ -21,3 +21,6 @@
 
 **User Stories**: 
 
+As a user I want to be able to view prayer times easily.
+
+As a user I want to be able to see Qibla direction everwhere I go.
