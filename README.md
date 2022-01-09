@@ -36,6 +36,7 @@ As a user I want to be able to know about the applictaion more.
 <hr>
 ## 3- My Development Process:
 
+
 *Designing :  I used figma to Design my app as a sketch.
 
 *Developing : I transformed my sketch into a design in Android Studio, then I started to writting my code and my Functions.
@@ -47,17 +48,19 @@ As a user I want to be able to know about the applictaion more.
 
 **Libraries Used**: 
 
--Lifecycles
--LiveData
--Navigation
--ViewModel
--UI
--Fragment
--Layout
--Retrofit
--MVVM Architecture
--DiffUtil
--SharedPrefrence
--HTTP Request
--Api
--Coroutines
+<hr>
+
+* Lifecycles
+* LiveData
+* Navigation
+* ViewModel
+* UI
+* Fragment
+* Layout
+* Retrofit
+* MVVM Architecture
+* DiffUtil
+* SharedPrefrence
+* HTTP Request
+* Api
+* Coroutines
