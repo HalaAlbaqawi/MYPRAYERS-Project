@@ -37,16 +37,16 @@ As a user I want to be able to know about the applictaion more.
 ## 3- My Development Process:
 
 
-*Designing :  I used figma to Design my app as a sketch.
+* Designing :  I used figma to Design my app as a sketch.
 
-*Developing : I transformed my sketch into a design in Android Studio, then I started to writting my code and my Functions.
+* Developing : I transformed my sketch into a design in Android Studio, then I started to writting my code and my Functions.
 
-*Testing : I started to testing my app by using developer Tools such as: 1- Debugging the code, 2-Searching, 3- Brain Storming.
+* Testing : I started to testing my app by using developer Tools such as: 1- Debugging the code, 2-Searching, 3- Brain Storming.
 
 ## 4- Unsolved problems:
 
 
-**Libraries Used**: 
+## 5- Libraries Used: 
 
 <hr>
 
