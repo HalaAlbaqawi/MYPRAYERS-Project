@@ -21,21 +21,21 @@
 
 **User Stories**: 
 
-As a user I want to be able to view prayer times easily.
+* As a user I want to be able to view prayer times easily.
 
-As a user I want to be able to check both Hijri and Gregorian Calender.
+* As a user I want to be able to check both Hijri and Gregorian Calender.
 
-As a user I want to be able to view Qibla direction everwhere I go.
+* As a user I want to be able to view Qibla direction everwhere I go.
 
-As a user I want to be able to read daily Dua'a.
+* As a user I want to be able to read daily Dua'a.
 
-As a user I want to be able to creat my own Dua'a List.
+* As a user I want to be able to creat my own Dua'a List.
 
-As a user I want to be able to know about the applictaion more. 
+* As a user I want to be able to know about the applictaion more. 
 
 <hr>
-## 3- My Development Process:
 
+## 3- My Development Process:
 
 * Designing :  I used figma to Design my app as a sketch.
 
