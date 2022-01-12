@@ -78,7 +78,15 @@ class HomeFragment : Fragment() {
 
         notificationManager =
             requireActivity().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        time()
+        sharedPref =
+            requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
+        if (sharedPref.getBoolean("notifi", true)) {
+            time()
+            sharedPref = requireActivity().getSharedPreferences(
+                SHARED_PREF_FILE,
+                Context.MODE_PRIVATE
+            )
+        }
 
 
         val sdf = SimpleDateFormat("dd/MM/yyyy")
@@ -148,12 +156,7 @@ class HomeFragment : Fragment() {
             override fun onFinish() {
                 sharedPref =
                     requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
-                if (sharedPref.getBoolean("notifi", true)) {
-                    notification()
-                    sharedPref = requireActivity().getSharedPreferences(
-                        SHARED_PREF_FILE,
-                        Context.MODE_PRIVATE
-                    )
+               notification()
                     sharedPrefEditor = sharedPref.edit()
                     sharedPrefEditor.putBoolean("notifi", false)
                     sharedPrefEditor.commit()
@@ -162,11 +165,10 @@ class HomeFragment : Fragment() {
 
 
             }
-
+timeUp.start()
         }
-        timeUp.start()
+
 
     }
 
 
-}

@@ -61,7 +61,7 @@ class RegisterActivity : AppCompatActivity() {
                         val firebaseuser: FirebaseUser = task.result!!.user!!
                         Toast.makeText(this, "You Registered Successfully", Toast.LENGTH_SHORT)
                             .show()
-                        val intent = Intent(this, MainActivity::class.java)
+                        val intent = Intent(this, LoginActivity::class.java)
                         intent.putExtra("UserId", firebaseuser.uid)
                         intent.putExtra("Email", firebaseuser.email)
                         startActivity(intent)

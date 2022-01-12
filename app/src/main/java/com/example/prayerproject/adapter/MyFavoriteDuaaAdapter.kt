@@ -1,15 +1,20 @@
 package com.example.prayerproject.adapter
 
 
+import android.app.ActivityManager
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.prayerproject.Service.AlarmService
 import com.example.prayerproject.databinding.MyduaaItemLayoutBinding
 import com.example.prayerproject.model.DuaaModel
 import com.example.prayerproject.view.MyFavoriteDuaaViewModel
@@ -45,7 +50,7 @@ class MyFavoriteDuaaAdapter(
 
         val binding =
             MyduaaItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyFavoriteAthkarViewHolder(binding,myFavoriteDuaaViewModel)
+        return MyFavoriteAthkarViewHolder(binding, myFavoriteDuaaViewModel)
     }
 
 
@@ -63,17 +68,20 @@ class MyFavoriteDuaaAdapter(
 
         }
 
-
+        // to svae the alarm button state when its pressed
         holder.binding.alarmToggleButton.setOnClickListener {
             Log.d(TAG, "inside the edit")
             if (holder.binding.alarmToggleButton.isChecked) {
-
                 timePicker(item)
+
+
             } else {
                 item.isNotify = false
                 myFavoriteDuaaViewModel.editAthkar(item)
             }
         }
+
+
     }
 
     // time picker dialog on favorite duaa to remind the user what time he wants
@@ -88,6 +96,8 @@ class MyFavoriteDuaaAdapter(
             item.time = timeSet
             item.alarm = true
 
+            startStopService(item.title,item.duaa,hour,minute)
+
             myFavoriteDuaaViewModel.editAthkar(item)
 
         }
@@ -100,28 +110,71 @@ class MyFavoriteDuaaAdapter(
         )
 
         time.show()
-
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
 
-    class MyFavoriteAthkarViewHolder(val binding: MyduaaItemLayoutBinding,
-    val myFavoriteDuaaViewModel: MyFavoriteDuaaViewModel) :
+    class MyFavoriteAthkarViewHolder(
+        val binding: MyduaaItemLayoutBinding,
+        val myFavoriteDuaaViewModel: MyFavoriteDuaaViewModel
+    ) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(athkarModel: DuaaModel) {
+        fun bind(duaaModel: DuaaModel) {
 
-            binding.athkarTextview.text = athkarModel.duaa
-            binding.titleTextview.text = athkarModel.title
-            binding.alarmToggleButton.isChecked = athkarModel.alarm
+            binding.athkarTextview.text = duaaModel.duaa
+            binding.titleTextview.text = duaaModel.title
+            binding.alarmToggleButton.isChecked = duaaModel.alarm
             val deleteImageButton = binding.deleteImageButton
             val alarmToggleButton = binding.alarmToggleButton
 
-
-            }
-
         }
 
+    }
+
+
+    private fun startStopService(title: String, text: String, hour: Int, minute: Int) {
+
+
+        Toast.makeText(context, "Service Started", Toast.LENGTH_SHORT).show()
+        val intent = Intent(context, AlarmService::class.java)
+        intent.putExtra("title",title)
+        intent.putExtra("text",text)
+        intent.putExtra("hour",hour)
+        intent.putExtra("minute",minute)
+        context.startService(intent)
+//        if (isMyServiceRunning(AlarmService::class.java)) {
+//            Toast.makeText(context, "Service Stopped", Toast.LENGTH_SHORT).show()
+//
+//            val intent = Intent(context, AlarmService::class.java)
+//            context.stopService(intent)
+//
+//        } else {
+//
+//            Toast.makeText(context, "Service Started", Toast.LENGTH_SHORT).show()
+//            val intent = Intent(context, AlarmService::class.java)
+//            intent.putExtra("title",title)
+//            intent.putExtra("text",text)
+//            intent.putExtra("hour",hour)
+//            intent.putExtra("minute",minute)
+//            context.startService(intent)
+//        }
 
     }
+
+    private fun isMyServiceRunning(mClass: Class<AlarmService>): Boolean {
+
+        val manager: ActivityManager =
+            context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        for (service: ActivityManager.RunningServiceInfo in
+        manager.getRunningServices(Integer.MAX_VALUE)) {
+
+            if (mClass.name.equals(service.service.className)) {
+                return true
+
+            }
+        }
+        return false
+    }
+}

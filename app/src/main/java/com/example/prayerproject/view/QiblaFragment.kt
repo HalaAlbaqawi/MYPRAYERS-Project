@@ -120,11 +120,15 @@ class QiblaFragment : Fragment(), SensorEventListener {
 
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 // getting the last known or current location
-                val latitude = location.latitude
-                val longitude = location.longitude
 
-                Log.d(TAG, "$latitude,$longitude")
-                qiblaViewModel.getQibla(latitude, longitude)
+                location?.let {
+                    val latitude = location.latitude
+                    val longitude = location.longitude
+
+                    Log.d(TAG, "$latitude,$longitude")
+                    qiblaViewModel.getQibla(latitude, longitude)
+
+                }
 
 
             }

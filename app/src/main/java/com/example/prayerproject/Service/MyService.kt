@@ -22,17 +22,19 @@ class MyService : Service(){
 
     override fun onCreate() {
         super.onCreate()
+
         initAdhan()
         creareNotificationChannel()
     }
 
-
-
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
+
+
         showNotification()
+
+
 
         if (adhanPlayer.isPlaying) {
             adhanPlayer.start()
