@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.prayerproject.R
 import com.example.prayerproject.Service.AlarmService
 import com.example.prayerproject.databinding.MyduaaItemLayoutBinding
 import com.example.prayerproject.model.DuaaModel
@@ -66,6 +67,8 @@ class MyFavoriteDuaaAdapter(
             myFavoriteDuaaViewModel.deleteAthkar(item.id)
             differ.submitList(myAthkar)
 
+//            isMyServiceRunning(AlarmService::class.java)
+
         }
 
         // to svae the alarm button state when its pressed
@@ -76,11 +79,13 @@ class MyFavoriteDuaaAdapter(
 
 
             } else {
-                item.isNotify = false
+                item.alarm = false
                 myFavoriteDuaaViewModel.editAthkar(item)
-            }
-        }
 
+            }
+
+
+        }
 
     }
 
@@ -123,7 +128,7 @@ class MyFavoriteDuaaAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(duaaModel: DuaaModel) {
 
-            binding.athkarTextview.text = duaaModel.duaa
+            binding.duaaTextview.text = duaaModel.duaa
             binding.titleTextview.text = duaaModel.title
             binding.alarmToggleButton.isChecked = duaaModel.alarm
             val deleteImageButton = binding.deleteImageButton
@@ -137,29 +142,13 @@ class MyFavoriteDuaaAdapter(
     private fun startStopService(title: String, text: String, hour: Int, minute: Int) {
 
 
-        Toast.makeText(context, "Service Started", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
         val intent = Intent(context, AlarmService::class.java)
         intent.putExtra("title",title)
         intent.putExtra("text",text)
         intent.putExtra("hour",hour)
         intent.putExtra("minute",minute)
         context.startService(intent)
-//        if (isMyServiceRunning(AlarmService::class.java)) {
-//            Toast.makeText(context, "Service Stopped", Toast.LENGTH_SHORT).show()
-//
-//            val intent = Intent(context, AlarmService::class.java)
-//            context.stopService(intent)
-//
-//        } else {
-//
-//            Toast.makeText(context, "Service Started", Toast.LENGTH_SHORT).show()
-//            val intent = Intent(context, AlarmService::class.java)
-//            intent.putExtra("title",title)
-//            intent.putExtra("text",text)
-//            intent.putExtra("hour",hour)
-//            intent.putExtra("minute",minute)
-//            context.startService(intent)
-//        }
 
     }
 
@@ -177,4 +166,6 @@ class MyFavoriteDuaaAdapter(
         }
         return false
     }
+
+
 }

@@ -13,10 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PrayerProject"
         android:usesCleartextTraffic="true">
-        <service
-            android:name=".Service.MyService2"
-            android:enabled="true"
-            android:exported="true"></service>
+
 
         <activity
             android:name=".main.MainActivity"
@@ -45,7 +42,6 @@
             android:resource="@array/preloaded_fonts" />
 
         <service android:name=".Service.AlarmService" />
-        <service android:name=".Service.DuaaService" />
     </application>
 
 </manifest>

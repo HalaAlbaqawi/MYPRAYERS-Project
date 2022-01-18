@@ -9,6 +9,20 @@
     app:circularflow_defaultRadius="30dp"
     app:circularflow_radiusInDP="20">
 
+    <TextView
+        android:id="@+id/message_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="200dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="111dp" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
@@ -59,7 +73,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/athkar_textview"
+                    android:id="@+id/duaa_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -74,11 +88,15 @@
                 android:id="@+id/alarm_toggleButton"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_gravity="center|right|top"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginBottom="30dp"
                 android:background="@drawable/notification_selector"
+                android:gravity="right"
                 android:text="ToggleButton"
                 android:textOff="   "
                 android:textOn=" " />

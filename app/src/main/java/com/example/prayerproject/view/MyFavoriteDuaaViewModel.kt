@@ -42,24 +42,24 @@ class MyFavoriteDuaaViewModel : ViewModel() {
     }
 
 
-    fun getMyAthkar() {
-
-        Log.d(TAG, "get Athkar")
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                val response = apiRepo.getMyAthkar("")
-
-                response.body()?.run {
-                    myAthkarLiveData.postValue(this)
-                    Log.d(TAG, this.toString())
-                }
-                Log.d(TAG, response.message())
-            } catch (e: Exception) {
-                Log.d(TAG, e.message.toString())
-                myAthkarErrorLiveData.postValue(e.message.toString())
-            }
-        }
-    }
+//    fun getMyAthkar() {
+//
+//        Log.d(TAG, "get Athkar")
+//        viewModelScope.launch(Dispatchers.IO) {
+//            try {
+//                val response = apiRepo.getMyAthkar("")
+//
+//                response.body()?.run {
+//                    myAthkarLiveData.postValue(this)
+//                    Log.d(TAG, this.toString())
+//                }
+//                Log.d(TAG, response.message())
+//            } catch (e: Exception) {
+//                Log.d(TAG, e.message.toString())
+//                myAthkarErrorLiveData.postValue(e.message.toString())
+//            }
+//        }
+//    }
 
     fun editAthkar(athkarModel: DuaaModel) {
 
@@ -92,6 +92,7 @@ class MyFavoriteDuaaViewModel : ViewModel() {
                 response.body()?.run {
                     LiveData.postValue(this.toString())
                     Log.d(TAG, this.toString())
+                    callData()
                 }
                 Log.d(TAG, response.message())
             } catch (e: Exception) {

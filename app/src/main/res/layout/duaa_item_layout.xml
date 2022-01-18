@@ -68,7 +68,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/athkar_textview"
+                        android:id="@+id/duaa_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

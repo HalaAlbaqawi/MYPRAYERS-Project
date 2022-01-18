@@ -3,26 +3,21 @@ package com.example.prayerproject.Service
 import android.app.*
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
-import android.os.CountDownTimer
 import android.os.Handler
-import android.os.IBinder
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationCompat.PRIORITY_MIN
 import com.example.prayerproject.R
-import android.widget.Toast
-import com.example.prayerproject.main.handler
-import androidx.core.app.NotificationManagerCompat
 import java.util.*
 
 
 const val CHANNELID = "my id"
 const val NOTIFICATION_ID = 123
 private const val TAG = "AlarmService"
+
 class AlarmService: Service() {
 
 
@@ -35,38 +30,47 @@ class AlarmService: Service() {
         super.onStart(intent, startId)
 
 
-        val title = intent?.getStringExtra("title")
-        val text = intent?.getStringExtra("text")
-        val hour =intent?.getIntExtra("hour",24)
-        val minute =intent?.getIntExtra("minute",60)
+        intent?.let {
+            val title = intent?.getStringExtra("title")
+            val text = intent?.getStringExtra("text")
+            val hour = intent?.getIntExtra("hour",24)?.times(360000)
+            val minute = intent?.getIntExtra("minute",60)?.times(60000)
 
-        Log.d(TAG, "onStart")
+            var timeMilli = hour + minute
+            Log.d(TAG, "onStart")
 
 
-        Handler().postDelayed({
-              showNotification(title!!,text!!)
+            Handler().postDelayed({
+                showNotification(title!!,text!!)
 
-        },10000)
+            }, (timeMilli - getTime()).toLong())
+
+
+        }
+
 
 
     }
 
+    fun getTime() : Int {
+        var currenttime: Date = Calendar.getInstance().getTime()
+        //milliseconds
+
+        var hour = currenttime.hours * 3600000
+
+        var minutes = currenttime.minutes * 60000
+
+        val millis = hour + minutes
 
 
+        return millis
+    }
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         return super.onStartCommand(intent, flags, startId)
 
         Log.d(TAG, "onStartCommand")
 
 
-//
-//        Handler().postDelayed({
-//            Toast.makeText(this, "Service is still running", Toast.LENGTH_LONG).show()
-//            //  showNotification("title!!,text!!","DSfsdfsd")
-//
-//           // notification()
-//
-//        },8000)
 
         return START_STICKY
 
@@ -104,31 +108,7 @@ class AlarmService: Service() {
         service.createNotificationChannel(chan)
         return channelId
     }
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    private fun showNotification(title: String, text: String){
-//
-//        val notificationIntent = Intent(this, MainActivity::class.java)
-//        val pendingIntent = PendingIntent.getActivity(this,0,notificationIntent,0)
-//
-//        val notification = Notification
-//            .Builder(this, CHANNELID)
-////            .setChannelId("")
-//            .setSmallIcon(R.drawable.ic_launcher_foreground)
-//            .setContentTitle(title)
-//            .setContentText(text)
-//            .build()
-//
-//        startForeground(NOTIFICATION_ID,notification)
-//
-//    }
 
 
-    fun time() {
-
-            val time = Calendar.getInstance()
-            println(time.timeInMillis)
-
-
-    }
 
 }

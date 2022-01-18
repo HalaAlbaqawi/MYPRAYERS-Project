@@ -44,38 +44,22 @@ class RegisterActivity : AppCompatActivity() {
 
                 // To check if your password and email are strong and correct
                 if (validator.passwordIsValid(password)) {
+
+
+
                 } else
                     Toast.makeText(this, "Make sure your password is strong.", Toast.LENGTH_SHORT)
                         .show()
-            } else
+            } else{
+                binding.emailContainer.helperText = getString(R.string.required)
+                binding.passwordContainer.helperText = getString(R.string.required)
                 Toast.makeText(
                     this,
-                    "Make sure you typed your email address correctly.",
+                    "Make sure you fill the required fields.",
                     Toast.LENGTH_SHORT
                 ).show()
-            Log.d("RegisterActivity", email)
-            FirebaseAuth.getInstance()
-                .createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val firebaseuser: FirebaseUser = task.result!!.user!!
-                        Toast.makeText(this, "You Registered Successfully", Toast.LENGTH_SHORT)
-                            .show()
-                        val intent = Intent(this, LoginActivity::class.java)
-                        intent.putExtra("UserId", firebaseuser.uid)
-                        intent.putExtra("Email", firebaseuser.email)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        Log.d("RegisterActivity", task.exception!!.message.toString())
+            Log.d("RegisterActivity", email)}
 
-                        Toast.makeText(
-                            this,
-                            task.exception!!.message.toString(),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
         }
     }
 

@@ -16,10 +16,10 @@ import com.example.prayerproject.view.MyFavoriteDuaaViewModel
 const val TAG = "DuaaAdapter"
 
 class DuaaAdapter(
-    val athkarViewModel: DuaaViewModel,
+    val duaaViewModel: DuaaViewModel,
     val myFavoriteDuaaViewModel: MyFavoriteDuaaViewModel,
     val context: Context
-) : RecyclerView.Adapter<DuaaAdapter.AthkarViewHolder>() {
+) : RecyclerView.Adapter<DuaaAdapter.DuaaViewHolder>() {
 
 
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DuaaModel>() {
@@ -42,22 +42,22 @@ class DuaaAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): AthkarViewHolder {
+    ): DuaaViewHolder {
 
         val binding =
             DuaaItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return AthkarViewHolder(binding, athkarViewModel)
+        return DuaaViewHolder(binding, duaaViewModel)
     }
 
 
-    override fun onBindViewHolder(holder: AthkarViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DuaaViewHolder, position: Int) {
         val item = differ.currentList[position]
         holder.bind(item)
         holder.binding.addImagebutton.setOnClickListener {
             Toast.makeText(context, "Dua'a has been added to your list", Toast.LENGTH_SHORT).show()
 
             Log.d(TAG, "inside the add")
-            athkarViewModel.addAthkar(item)
+            duaaViewModel.addAthkar(item)
 
         }
 
@@ -69,15 +69,15 @@ class DuaaAdapter(
         return differ.currentList.size
     }
 
-    class AthkarViewHolder(
+    class DuaaViewHolder(
         val binding: DuaaItemLayoutBinding,
-        val athkarViewModel: DuaaViewModel,
+        val duaaViewModel: DuaaViewModel,
     ) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(athkarModel: DuaaModel) {
+        fun bind(duaaModel: DuaaModel) {
 
-            binding.athkarTextview.text = athkarModel.duaa
-            binding.titleTextview.text = athkarModel.title
+            binding.duaaTextview.text = duaaModel.duaa
+            binding.titleTextview.text = duaaModel.title
         }
 
     }

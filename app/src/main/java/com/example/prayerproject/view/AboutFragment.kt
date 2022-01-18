@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import com.example.prayerproject.R
 import java.lang.Exception
@@ -33,8 +34,8 @@ class AboutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button: ImageButton = view.findViewById(R.id.website_button)
-        button.setOnClickListener {
+        val link: TextView = view.findViewById(R.id.link_textView)
+        link.setOnClickListener {
             //implicit intent to open website
             try {
                 val websiteIntent =

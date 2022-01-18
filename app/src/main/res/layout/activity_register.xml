@@ -37,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="30dp"
-            app:helperText="@string/required"
             app:helperTextTextColor="@android:color/holo_red_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +67,6 @@
             android:layout_marginTop="30dp"
             app:counterEnabled="true"
             app:counterMaxLength="16"
-            app:helperText="@string/required"
             app:helperTextTextColor="@android:color/holo_red_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -108,11 +106,12 @@
         <TextView
             android:id="@+id/login_textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/ruluko"
             android:gravity="center"
             android:text="Already have an account ?"
+            android:background="?selectableItemBackground"
             android:textColor="@color/cardView"
             android:textSize="20dp" />
     </LinearLayout>
