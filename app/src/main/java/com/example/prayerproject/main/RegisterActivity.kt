@@ -44,8 +44,32 @@ class RegisterActivity : AppCompatActivity() {
 
                 // To check if your password and email are strong and correct
                 if (validator.passwordIsValid(password)) {
+                    FirebaseAuth.getInstance()
+                        .createUserWithEmailAndPassword(email,password)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val firebaseuser: FirebaseUser = task.result!!.user!!
+                                Toast.makeText(
+                                    this,
+                                    "User Registered Successfully",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                Toast.makeText(
+                                    this,
+                                    "You Registered Successfully",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                val intent = Intent(this, MainActivity::class.java)
+                                intent.putExtra("UserId", firebaseuser.uid)
+                                intent.putExtra("Email", firebaseuser.email)
+                                startActivity(intent)
+                                finish()
 
+                            }else{
+                                Toast.makeText(this, task.exception!!.message, Toast.LENGTH_SHORT).show()
+                            }
 
+                        }
 
                 } else
                     Toast.makeText(this, "Make sure your password is strong.", Toast.LENGTH_SHORT)
@@ -88,7 +112,7 @@ class RegisterActivity : AppCompatActivity() {
             .setTitle("Invalid Form")
             .setMessage(message)
             .setPositiveButton("Okay") { _, _ ->
-                // do nothing
+//                 do nothing
             }
             .show()
     }

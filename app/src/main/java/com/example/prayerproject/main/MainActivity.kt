@@ -11,7 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.prayerproject.R
 import com.example.prayerproject.databinding.ActivityMainBinding
-import com.example.prayerproject.view.HomeFragment
+import com.example.prayerproject.view.*
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -58,6 +58,12 @@ class MainActivity : AppCompatActivity() {
                             navHostFragment.childFragmentManager.primaryNavigationFragment
                         when (fragment) {
                             is HomeFragment -> navController.navigate(R.id.action_homeFragment_to_aboutFragment)
+                            is PrayersTimeFragment -> navController.navigate(R.id.action_prayersTimeFragment_to_aboutFragment)
+                            is MenuFragment -> navController.navigate(R.id.action_menuFragment_to_aboutFragment)
+                            is QiblaFragment -> navController.navigate(R.id.action_qiblaFragment_to_aboutFragment)
+                            is MyFavoriteAthkarFragment -> navController.navigate(R.id.action_myFavoriteAthkarFragment_to_aboutFragment)
+                            is AthkarFragment -> navController.navigate(R.id.action_athkarFragment_to_aboutFragment)
+
                         }
 
                     }

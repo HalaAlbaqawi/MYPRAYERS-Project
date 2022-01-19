@@ -29,7 +29,7 @@ class MyFavoriteDuaaViewModel : ViewModel() {
                 val response = apiRepo.getMyAthkar(FirebaseAuth.getInstance().currentUser!!.uid)
 
                 response.body()?.run {
-                    myAthkarLiveData.postValue(this)
+                    myAthkarLiveData.postValue(this.distinctBy {it.title})
                     Log.d(TAG, this.toString())
                 }
                 Log.d(TAG, response.message())

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutFragment2"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -23,7 +26,11 @@
         android:id="@+id/prayersTimeFragment"
         android:name="com.example.prayerproject.view.PrayersTimeFragment"
         android:label="fragment_prayers_time"
-        tools:layout="@layout/fragment_prayers_time" />
+        tools:layout="@layout/fragment_prayers_time" >
+        <action
+            android:id="@+id/action_prayersTimeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.example.prayerproject.view.MenuFragment"
@@ -35,6 +42,9 @@
         <action
             android:id="@+id/action_menuFragment_to_athkarFragment"
             app:destination="@id/athkarFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/myFavoriteAthkarFragment"
@@ -44,15 +54,26 @@
         <action
             android:id="@+id/action_myFavoriteAthkarFragment_to_athkarFragment"
             app:destination="@id/athkarFragment" />
+        <action
+            android:id="@+id/action_myFavoriteAthkarFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/athkarFragment"
         android:name="com.example.prayerproject.view.AthkarFragment"
         android:label="fragment_athkar"
-        tools:layout="@layout/fragment_duaa" />
+        tools:layout="@layout/fragment_duaa" >
+        <action
+            android:id="@+id/action_athkarFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/qiblaFragment"
         android:name="com.example.prayerproject.view.QiblaFragment"
         android:label="fragment_qibla"
-        tools:layout="@layout/fragment_qibla" />
+        tools:layout="@layout/fragment_qibla" >
+        <action
+            android:id="@+id/action_qiblaFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
 </navigation>

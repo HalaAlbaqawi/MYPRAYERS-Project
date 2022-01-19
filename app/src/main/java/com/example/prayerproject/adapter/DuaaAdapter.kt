@@ -13,7 +13,7 @@ import com.example.prayerproject.model.DuaaModel
 import com.example.prayerproject.view.DuaaViewModel
 import com.example.prayerproject.view.MyFavoriteDuaaViewModel
 
-const val TAG = "DuaaAdapter"
+private const val TAG = "DuaaAdapter"
 
 class DuaaAdapter(
     val duaaViewModel: DuaaViewModel,

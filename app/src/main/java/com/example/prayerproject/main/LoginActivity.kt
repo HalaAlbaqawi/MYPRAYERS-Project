@@ -22,10 +22,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val emailAddress: EditText = findViewById(R.id.emailAddress_EditText)
-        val password: EditText = findViewById(R.id.password_EditText)
+        val emailAddress: EditText = findViewById(R.id.login_emailEditText)
+        val password: EditText = findViewById(R.id.login_passwordEditText)
         val loginButton: Button = findViewById(R.id.login_button)
-        val registerTextView: TextView = findViewById(R.id.register_TextView)
+        val registerTextView: TextView = findViewById(R.id.login_textView)
 
         registerTextView.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))

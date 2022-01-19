@@ -1,6 +1,7 @@
 package com.example.prayerproject.Service
 
 import android.app.*
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -10,7 +11,10 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationCompat.PRIORITY_MIN
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat.getSystemService
 import com.example.prayerproject.R
+import okhttp3.internal.notify
 import java.util.*
 
 
@@ -18,8 +22,12 @@ const val CHANNELID = "my id"
 const val NOTIFICATION_ID = 123
 private const val TAG = "AlarmService"
 
-class AlarmService: Service() {
+class AlarmService: Service () {
 
+//BrodcastReciver
+//    override fun onReceive(context: Context?, intent: Intent?) {
+//
+//    }
 
     override fun onBind(intent: Intent?) = null
 
@@ -87,6 +95,8 @@ class AlarmService: Service() {
                 ""
             }
 
+
+
         val notificationBuilder = NotificationCompat.Builder(this, channelId )
         val notification = notificationBuilder.setOngoing(true)
             .setSmallIcon(R.mipmap.ic_launcher)
@@ -94,9 +104,15 @@ class AlarmService: Service() {
             .setContentTitle(title)
             .setContentText(text)
             .setCategory(Notification.CATEGORY_SERVICE)
+//            .setContentIntent()
             .build()
-        startForeground(101, notification)
+//        startForeground(101, notification)
+//        notify(101, notification)
+        with(NotificationManagerCompat.from(this)){
+            notify(888, notification)
+        }
     }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel(channelId: String, channelName: String): String{
@@ -108,6 +124,7 @@ class AlarmService: Service() {
         service.createNotificationChannel(chan)
         return channelId
     }
+
 
 
 

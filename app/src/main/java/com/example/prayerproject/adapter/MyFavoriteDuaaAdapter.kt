@@ -20,7 +20,7 @@ import com.example.prayerproject.databinding.MyduaaItemLayoutBinding
 import com.example.prayerproject.model.DuaaModel
 import com.example.prayerproject.view.MyFavoriteDuaaViewModel
 
-
+private const val TAG = "MyFavoriteDuaaAdapter"
 class MyFavoriteDuaaAdapter(
     val myFavoriteDuaaViewModel: MyFavoriteDuaaViewModel,
     val context: Context
