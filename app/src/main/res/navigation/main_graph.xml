@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_aboutFragment2"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myFavoriteAthkarFragment"
+            app:destination="@id/myFavoriteAthkarFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

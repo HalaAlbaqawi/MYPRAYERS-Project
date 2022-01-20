@@ -14,6 +14,11 @@ class RegisterValidation {
 
     private val REGEX_EMAIL = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
 
+    private val REGEX_FIRST_NAME = ""
+    private val REGEX_LAST_NAME = ""
+
+
+
     // To check if the email is valid or not
     fun emailIsValid(email: String): Boolean {
         val pattern = Pattern.compile(REGEX_EMAIL)
@@ -30,4 +35,7 @@ class RegisterValidation {
         return matcher.matches()
 
     }
+
+
+
 }

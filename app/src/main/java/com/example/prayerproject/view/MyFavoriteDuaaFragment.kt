@@ -63,7 +63,6 @@ class MyFavoriteAthkarFragment() : Fragment() {
             myFavoriteAthkarAdapter.submitList(it)
 
 
-//            binding.messageTextView.isVisible = it.isEmpty()
       //checking the list if it's empty then show empty list message to the user
             if (it.isEmpty()){
               binding.messageTextView.visibility = View.VISIBLE
@@ -79,9 +78,5 @@ class MyFavoriteAthkarFragment() : Fragment() {
 
     }
 
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        val intent = Intent()
-//        alarmService.stopService(intent)
-//    }
+
 }

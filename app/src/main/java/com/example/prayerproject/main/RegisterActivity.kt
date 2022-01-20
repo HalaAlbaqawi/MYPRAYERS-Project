@@ -27,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
         emailFocusListener()
         passwordFocusListener()
-
+        confirmPasswordFocusListener()
         binding.registerButton.setOnClickListener { submitForm() }
 
 
@@ -45,7 +45,7 @@ class RegisterActivity : AppCompatActivity() {
                 // To check if your password and email are strong and correct
                 if (validator.passwordIsValid(password)) {
                     FirebaseAuth.getInstance()
-                        .createUserWithEmailAndPassword(email,password)
+                        .createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 val firebaseuser: FirebaseUser = task.result!!.user!!
@@ -65,8 +65,9 @@ class RegisterActivity : AppCompatActivity() {
                                 startActivity(intent)
                                 finish()
 
-                            }else{
-                                Toast.makeText(this, task.exception!!.message, Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(this, task.exception!!.message, Toast.LENGTH_SHORT)
+                                    .show()
                             }
 
                         }
@@ -74,7 +75,7 @@ class RegisterActivity : AppCompatActivity() {
                 } else
                     Toast.makeText(this, "Make sure your password is strong.", Toast.LENGTH_SHORT)
                         .show()
-            } else{
+            } else {
                 binding.emailContainer.helperText = getString(R.string.required)
                 binding.passwordContainer.helperText = getString(R.string.required)
                 Toast.makeText(
@@ -82,7 +83,8 @@ class RegisterActivity : AppCompatActivity() {
                     "Make sure you fill the required fields.",
                     Toast.LENGTH_SHORT
                 ).show()
-            Log.d("RegisterActivity", email)}
+                Log.d("RegisterActivity", email)
+            }
 
         }
     }
@@ -157,6 +159,14 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    private fun confirmPasswordFocusListener() {
+        binding.registerConfirmpasswordEditText.setOnFocusChangeListener { _, focused ->
+            if (!focused) {
+                binding.confirmPasswordContainer.helperText = validConfirmPassword()
+            }
+        }
+    }
+
     private fun validPassword(): String? {
         val passwordText = binding.registerPasswordEditText.text.toString()
         if (passwordText.length < 8) {
@@ -175,4 +185,12 @@ class RegisterActivity : AppCompatActivity() {
         return null
     }
 
+
+    private fun validConfirmPassword(): String? {
+
+        if (binding.registerPasswordEditText.text.toString() != binding.registerConfirmpasswordEditText.text.toString()) {
+            return "Confirm Password and Password must be the same"
+        }
+        return null
+    }
 }

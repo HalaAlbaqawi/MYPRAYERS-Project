@@ -40,15 +40,8 @@ class SplashActivity : AppCompatActivity() {
 
     private fun startStopService() {
 
-//        if (isMyServiceRunning(MyService::class.java)) {
-//            Toast.makeText(this, "Service Stopped", Toast.LENGTH_SHORT).show()
-//            stopService(Intent(this, MyService::class.java))
-//
-//        } else {
-//
-//            Toast.makeText(this, "Service Started", Toast.LENGTH_SHORT).show()
+
             startService(Intent(this, MyService::class.java))
-//        }
 
     }
 

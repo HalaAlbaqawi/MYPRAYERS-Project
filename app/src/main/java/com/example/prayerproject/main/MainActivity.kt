@@ -6,10 +6,12 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.prayerproject.R
+import com.example.prayerproject.Service.AlarmService
 import com.example.prayerproject.databinding.ActivityMainBinding
 import com.example.prayerproject.view.*
 import com.google.firebase.auth.FirebaseAuth
@@ -30,6 +32,19 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
+
+//        val duaaIntent = intent.getBooleanExtra("Dua'a",false)
+
+//        if (duaaIntent){
+//            navController.navigate(R.id.action_homeFragment_to_myFavoriteAthkarFragment)
+//            stopService(intent)
+
+
+       // to hide the notification after its pressed by the user
+        //(Stopping the Service )
+            val intent = Intent(this, AlarmService::class.java)
+
+            this.stopService(intent)
 
         window.navigationBarColor =
             this.resources.getColor(R.color.black) // this is for the navigation bar color of the android system

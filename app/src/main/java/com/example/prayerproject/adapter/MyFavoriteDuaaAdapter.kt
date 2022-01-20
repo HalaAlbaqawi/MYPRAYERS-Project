@@ -111,7 +111,7 @@ class MyFavoriteDuaaAdapter(
             timeSetListener,
             0,
             0,
-            true
+            false
         )
 
         time.show()

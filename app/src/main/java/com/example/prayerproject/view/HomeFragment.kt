@@ -4,14 +4,12 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.BitmapFactory
 import android.icu.text.SimpleDateFormat
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
 import android.util.Log
 import android.view.*
 import androidx.annotation.RequiresApi
@@ -26,6 +24,9 @@ import java.time.LocalTime
 import java.time.chrono.HijrahDate
 import java.time.format.DateTimeFormatter
 import java.util.*
+
+
+
 
 private lateinit var binding: FragmentHomeBinding
 private const val TAG = "HomeFragment"
@@ -72,7 +73,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.homeProgressBar.animate().alpha(0f)
 
-
+        // getting current time, time format (clock)
         val formatter = DateTimeFormatter.ofPattern("hh:mm a").format(LocalTime.now())
         binding.timeTextView.text = formatter.toString()
 
@@ -116,6 +117,12 @@ class HomeFragment : Fragment() {
         binding.hijriMonthTextView.text = formatted1
 
         Log.d(TAG, formatted1)
+
+//        val simpleDigitalClock =
+//            binding.timeTextView as DigitalClock // initiate a digital clock
+//
+//        simpleDigitalClock.setTextColor(Color.RED) // red text color for displayed text
+//
 
     }
 
