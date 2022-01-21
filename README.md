@@ -13,6 +13,7 @@
 
 * Figma
 
+* Gihub
 
 ## 2- Link to wirefarmes and user Stories:
  **Wireframes**:
@@ -21,7 +22,7 @@
 
 **User Stories**: 
 
-* As a user I want to be able to view prayer times easily.
+* As a user I want to get prayer time according to my current location.
 
 * As a user I want to be able to check both Hijri and Gregorian Calender.
 
@@ -61,6 +62,5 @@
 * MVVM Architecture
 * DiffUtil
 * SharedPrefrence
-* HTTP Request
 * Api
 * Coroutines
