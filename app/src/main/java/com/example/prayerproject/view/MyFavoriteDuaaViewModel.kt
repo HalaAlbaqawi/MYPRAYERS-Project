@@ -5,70 +5,51 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.prayerproject.model.DuaaModel
-import com.example.prayerproject.repositories.ApiServiceAthkarRepository
+import com.example.prayerproject.repositories.ApiServiceDuaaRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-private const val TAG = "MyFavoriteAthkarViewMod"
+private const val TAG = "MyFavoriteDuaaViewModel"
 
 class MyFavoriteDuaaViewModel : ViewModel() {
 
 
-    private val apiRepo = ApiServiceAthkarRepository.get()
+    private val apiRepo = ApiServiceDuaaRepository.get()
 
 
-    val myAthkarLiveData = MutableLiveData<List<DuaaModel>>()
-    val myAthkarErrorLiveData = MutableLiveData<String>()
+    val myDuaaLiveData = MutableLiveData<List<DuaaModel>>()
+    val myDuaaErrorLiveData = MutableLiveData<String>()
     val LiveData = MutableLiveData<String>()
 
     fun callData() {
         Log.d(TAG, "Call Data")
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = apiRepo.getMyAthkar(FirebaseAuth.getInstance().currentUser!!.uid)
+                val response = apiRepo.getMyDuaa(FirebaseAuth.getInstance().currentUser!!.uid)
 
                 response.body()?.run {
-                    myAthkarLiveData.postValue(this.distinctBy {it.title})
+                    myDuaaLiveData.postValue(this.distinctBy { it.title })
                     Log.d(TAG, this.toString())
                 }
                 Log.d(TAG, response.message())
             } catch (e: Exception) {
                 Log.d(TAG, e.message.toString())
-                myAthkarErrorLiveData.postValue(e.message.toString())
+                myDuaaErrorLiveData.postValue(e.message.toString())
             }
         }
 
     }
 
 
-//    fun getMyAthkar() {
-//
-//        Log.d(TAG, "get Athkar")
-//        viewModelScope.launch(Dispatchers.IO) {
-//            try {
-//                val response = apiRepo.getMyAthkar("")
-//
-//                response.body()?.run {
-//                    myAthkarLiveData.postValue(this)
-//                    Log.d(TAG, this.toString())
-//                }
-//                Log.d(TAG, response.message())
-//            } catch (e: Exception) {
-//                Log.d(TAG, e.message.toString())
-//                myAthkarErrorLiveData.postValue(e.message.toString())
-//            }
-//        }
-//    }
-
-    fun editAthkar(athkarModel: DuaaModel) {
+    fun editDuaa(duaaModel: DuaaModel) {
 
         Log.d(TAG, "edit Athkar")
-        Log.d(TAG, athkarModel.toString())
+        Log.d(TAG, duaaModel.toString())
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = apiRepo.editAthkar(athkarModel)
+                val response = apiRepo.editDuaa(duaaModel)
 
                 response.body()?.run {
                     LiveData.postValue(this.toString())
@@ -77,17 +58,17 @@ class MyFavoriteDuaaViewModel : ViewModel() {
                 Log.d(TAG, response.message())
             } catch (e: Exception) {
                 Log.d(TAG, e.message.toString())
-                myAthkarErrorLiveData.postValue(e.message.toString())
+                myDuaaErrorLiveData.postValue(e.message.toString())
             }
         }
     }
 
-    fun deleteAthkar(id: String) {
+    fun deleteDuaa(id: String) {
 
-        Log.d(TAG, "delete Athkar")
+        Log.d(TAG, "delete Duaa")
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = apiRepo.deleteAthkar(id)
+                val response = apiRepo.deleteDuaa(id)
 
                 response.body()?.run {
                     LiveData.postValue(this.toString())
@@ -97,7 +78,7 @@ class MyFavoriteDuaaViewModel : ViewModel() {
                 Log.d(TAG, response.message())
             } catch (e: Exception) {
                 Log.d(TAG, e.message.toString())
-                myAthkarErrorLiveData.postValue(e.message.toString())
+                myDuaaErrorLiveData.postValue(e.message.toString())
             }
         }
 

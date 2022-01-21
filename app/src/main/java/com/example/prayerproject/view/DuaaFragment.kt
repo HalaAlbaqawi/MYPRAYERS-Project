@@ -13,12 +13,12 @@ import com.example.prayerproject.databinding.FragmentDuaaBinding
 
 private const val TAG = "DuaaFragment"
 
-class AthkarFragment : Fragment() {
+class DuaaFragment : Fragment() {
 
     private lateinit var binding: FragmentDuaaBinding
     private lateinit var duaaAdapter: DuaaAdapter
     private val duaaViewModel: DuaaViewModel by activityViewModels()
-    private val myFavoriteAthkarViewModel: MyFavoriteDuaaViewModel by activityViewModels()
+    private val myFavoriteDuaaViewModel: MyFavoriteDuaaViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -35,23 +35,22 @@ class AthkarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.d(TAG, "athkar fragment")
+        Log.d(TAG, "duaa fragment")
         observers()
 
         duaaViewModel.callData()
 
-        duaaAdapter = DuaaAdapter(duaaViewModel, myFavoriteAthkarViewModel, requireContext())
-        binding.athkarRecyclerView.adapter = duaaAdapter
+        duaaAdapter = DuaaAdapter(duaaViewModel, myFavoriteDuaaViewModel, requireContext())
+        binding.duaaRecyclerView.adapter = duaaAdapter
 
 
     }
 
 
-
     fun observers() {
         duaaViewModel.duaaLiveData.observe(viewLifecycleOwner, {
             duaaAdapter.submitList(it)
-            binding.progressBarAthkar.animate().alpha(0f)
+            binding.progressBarDuaa.animate().alpha(0f)
 
         })
 

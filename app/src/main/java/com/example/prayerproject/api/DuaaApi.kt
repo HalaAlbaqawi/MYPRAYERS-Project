@@ -8,27 +8,27 @@ import retrofit2.http.*
 interface DuaaApi {
 
     @GET("/Duaa")
-    suspend fun getAthkar(
+    suspend fun getDuaa(
     ): Response<List<DuaaModel>>
 
 
     @GET("/myduaa")
-    suspend fun getMyAthkar(
+    suspend fun getMyDuaa(
         @Query("userid") userid: String
     ): Response<List<DuaaModel>>
 
 
     @POST("/myduaa")
-    suspend fun addAthkar(@Body DuaaBody: DuaaModel): Response<ResponseBody>
+    suspend fun addDuaa(@Body DuaaBody: DuaaModel): Response<ResponseBody>
 
 
     @PUT("/myduaa/{id}")
-    suspend fun editAthkar(
+    suspend fun editDuaa(
         @Path("id") id: String,
         @Body DuaaBody: DuaaModel
     ): Response<ResponseBody>
 
 
     @DELETE("/myduaa/{id}")
-    suspend fun deleteAthkar(@Path("id") Id: String): Response<ResponseBody>
+    suspend fun deleteDuaa(@Path("id") Id: String): Response<ResponseBody>
 }

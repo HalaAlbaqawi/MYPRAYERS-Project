@@ -26,8 +26,6 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 
-
-
 private lateinit var binding: FragmentHomeBinding
 private const val TAG = "HomeFragment"
 private lateinit var sharedPref: SharedPreferences
@@ -118,11 +116,6 @@ class HomeFragment : Fragment() {
 
         Log.d(TAG, formatted1)
 
-//        val simpleDigitalClock =
-//            binding.timeTextView as DigitalClock // initiate a digital clock
-//
-//        simpleDigitalClock.setTextColor(Color.RED) // red text color for displayed text
-//
 
     }
 
@@ -163,19 +156,17 @@ class HomeFragment : Fragment() {
             override fun onFinish() {
                 sharedPref =
                     requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
-               notification()
-                    sharedPrefEditor = sharedPref.edit()
-                    sharedPrefEditor.putBoolean("notifi", false)
-                    sharedPrefEditor.commit()
-
-                }
-
+                notification()
+                sharedPrefEditor = sharedPref.edit()
+                sharedPrefEditor.putBoolean("notifi", false)
+                sharedPrefEditor.commit()
 
             }
-timeUp.start()
+
+
         }
-
-
+        timeUp.start()
     }
 
 
+}

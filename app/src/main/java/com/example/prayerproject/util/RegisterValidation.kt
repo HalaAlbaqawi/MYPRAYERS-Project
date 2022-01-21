@@ -18,7 +18,6 @@ class RegisterValidation {
     private val REGEX_LAST_NAME = ""
 
 
-
     // To check if the email is valid or not
     fun emailIsValid(email: String): Boolean {
         val pattern = Pattern.compile(REGEX_EMAIL)
@@ -35,7 +34,6 @@ class RegisterValidation {
         return matcher.matches()
 
     }
-
 
 
 }

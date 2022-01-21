@@ -31,8 +31,6 @@ class RegisterActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener { submitForm() }
 
 
-
-
         binding.loginTextView.setOnClickListener() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()

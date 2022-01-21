@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/cardView"
-    tools:context=".view.MyFavoriteAthkarFragment">
+    tools:context=".view.MyFavoriteDuaaFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/myathkar_recyclerView"
+        android:id="@+id/myduaa_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ww"

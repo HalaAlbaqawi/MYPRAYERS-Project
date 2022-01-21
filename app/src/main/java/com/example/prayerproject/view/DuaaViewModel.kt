@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.prayerproject.model.DuaaModel
-import com.example.prayerproject.repositories.ApiServiceAthkarRepository
+import com.example.prayerproject.repositories.ApiServiceDuaaRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ private const val TAG = "AthkarViewModel"
 
 class DuaaViewModel : ViewModel() {
 
-    private val apiRepo = ApiServiceAthkarRepository.get()
+    private val apiRepo = ApiServiceDuaaRepository.get()
     val duaaLiveData = MutableLiveData<List<DuaaModel>>()
     val LiveData = MutableLiveData<String>()
     val duaaErrorLiveData = MutableLiveData<String>()
@@ -24,7 +24,7 @@ class DuaaViewModel : ViewModel() {
         Log.d(TAG, "NO DATA")
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = apiRepo.getAthkar()
+                val response = apiRepo.getDuaa()
 
                 response.body()?.run {
                     duaaLiveData.postValue(this)
@@ -38,14 +38,15 @@ class DuaaViewModel : ViewModel() {
         }
 
     }
-    fun addAthkar(athkarModel: DuaaModel) {
+
+    fun addDuaa(duaaModel: DuaaModel) {
 
         Log.d(TAG, "check")
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = apiRepo.addAthkar(
+                val response = apiRepo.addDuaa(
                     DuaaModel(
-                        athkarModel.duaa, "", athkarModel.title,
+                        duaaModel.duaa, "", duaaModel.title,
                         FirebaseAuth.getInstance().currentUser!!.uid
                     )
                 )

@@ -9,12 +9,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.prayerproject.R
 import com.example.prayerproject.Service.AlarmService
 import com.example.prayerproject.databinding.MyduaaItemLayoutBinding
 import com.example.prayerproject.model.DuaaModel
@@ -24,7 +21,7 @@ private const val TAG = "MyFavoriteDuaaAdapter"
 class MyFavoriteDuaaAdapter(
     val myFavoriteDuaaViewModel: MyFavoriteDuaaViewModel,
     val context: Context
-) : RecyclerView.Adapter<MyFavoriteDuaaAdapter.MyFavoriteAthkarViewHolder>() {
+) : RecyclerView.Adapter<MyFavoriteDuaaAdapter.MyFavoriteDuaaViewHolder>() {
 
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DuaaModel>() {
 
@@ -47,25 +44,25 @@ class MyFavoriteDuaaAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MyFavoriteAthkarViewHolder {
+    ): MyFavoriteDuaaViewHolder {
 
         val binding =
             MyduaaItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyFavoriteAthkarViewHolder(binding, myFavoriteDuaaViewModel)
+        return MyFavoriteDuaaViewHolder(binding, myFavoriteDuaaViewModel)
     }
 
 
-    override fun onBindViewHolder(holder: MyFavoriteAthkarViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyFavoriteDuaaViewHolder, position: Int) {
         val item = differ.currentList[position]
         holder.bind(item)
         holder.binding.deleteImageButton.setOnClickListener {
             Toast.makeText(context, "Dua'a has been removed from your list", Toast.LENGTH_SHORT)
                 .show()
-            val myAthkar = mutableListOf<DuaaModel>()
-            myAthkar.addAll(differ.currentList)
-            myAthkar.remove(item)
-            myFavoriteDuaaViewModel.deleteAthkar(item.id)
-            differ.submitList(myAthkar)
+            val myDuaa = mutableListOf<DuaaModel>()
+            myDuaa.addAll(differ.currentList)
+            myDuaa.remove(item)
+            myFavoriteDuaaViewModel.deleteDuaa(item.id)
+            differ.submitList(myDuaa)
 
 //            isMyServiceRunning(AlarmService::class.java)
 
@@ -80,7 +77,7 @@ class MyFavoriteDuaaAdapter(
 
             } else {
                 item.alarm = false
-                myFavoriteDuaaViewModel.editAthkar(item)
+                myFavoriteDuaaViewModel.editDuaa(item)
 
             }
 
@@ -103,7 +100,7 @@ class MyFavoriteDuaaAdapter(
 
             startStopService(item.title,item.duaa,hour,minute)
 
-            myFavoriteDuaaViewModel.editAthkar(item)
+            myFavoriteDuaaViewModel.editDuaa(item)
 
         }
         val time = TimePickerDialog(
@@ -121,7 +118,7 @@ class MyFavoriteDuaaAdapter(
         return differ.currentList.size
     }
 
-    class MyFavoriteAthkarViewHolder(
+    class MyFavoriteDuaaViewHolder(
         val binding: MyduaaItemLayoutBinding,
         val myFavoriteDuaaViewModel: MyFavoriteDuaaViewModel
     ) :

@@ -82,7 +82,6 @@ class PrayersTimeFragment : Fragment() {
                 }
 
 
-
             }
                 .addOnFailureListener {
                     Toast.makeText(

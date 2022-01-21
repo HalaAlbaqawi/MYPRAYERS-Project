@@ -60,7 +60,8 @@ class LoginActivity : AppCompatActivity() {
                             sharedPrefEditor = sharedPref.edit()
                             sharedPrefEditor.putBoolean("is Logged", true)
                             sharedPrefEditor.commit()
-                            sharedPref =this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
+                            sharedPref =
+                                this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
                             sharedPrefEditor = sharedPref.edit()
                             sharedPrefEditor.putBoolean("notifi", true)
                             sharedPrefEditor.commit()

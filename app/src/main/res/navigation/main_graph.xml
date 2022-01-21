@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/myFavoriteAthkarFragment"
-        android:name="com.example.prayerproject.view.MyFavoriteAthkarFragment"
+        android:name="com.example.prayerproject.view.MyFavoriteDuaaFragment"
         android:label="fragment_my_favorite_athkar"
         tools:layout="@layout/fragment_my_favorite_duaa" >
         <action
@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/athkarFragment"
-        android:name="com.example.prayerproject.view.AthkarFragment"
+        android:name="com.example.prayerproject.view.DuaaFragment"
         android:label="fragment_athkar"
         tools:layout="@layout/fragment_duaa" >
         <action

@@ -75,7 +75,7 @@ class AlarmService : Service() {
                 override fun onFinish() {
 
                     val notificationIntent = Intent(this@AlarmService, MainActivity::class.java)
-                    notificationIntent.putExtra("Dua'a",true)
+                    notificationIntent.putExtra("Dua'a", true)
                     val pendingIntent = PendingIntent.getActivity(
                         this@AlarmService,
                         0, notificationIntent, 0

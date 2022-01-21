@@ -57,7 +57,7 @@ class DuaaAdapter(
             Toast.makeText(context, "Dua'a has been added to your list", Toast.LENGTH_SHORT).show()
 
             Log.d(TAG, "inside the add")
-            duaaViewModel.addAthkar(item)
+            duaaViewModel.addDuaa(item)
 
         }
 
