@@ -97,8 +97,6 @@ class RegisterActivity : AppCompatActivity() {
 
         val validEmail = binding.emailContainer.helperText == null
         val validPassword = binding.passwordContainer.helperText == null
-        val validFirstname = binding.firstnameContainer.helperText == null
-        val validLastname = binding.lastnameContainer.helperText == null
 
         if (validEmail && validPassword)
             resetForm()
