@@ -74,3 +74,8 @@
 * Adhan notification: It will remind the user on every prayer time.
 
 * Quran.
+
+
+## 6- Unsolved Problems: 
+
+* Adhan Notification
