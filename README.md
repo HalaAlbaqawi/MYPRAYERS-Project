@@ -64,3 +64,9 @@
 * SharedPrefrence
 * Api
 * Coroutines
+
+## 5- Upcoming Features: 
+
+* Adhan notification: It will remind the user on every prayer time.
+
+* Quran.
