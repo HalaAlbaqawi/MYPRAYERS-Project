@@ -13,6 +13,7 @@
 
 * Figma
 
+* Gihub
 
 ## 2- Link to wirefarmes and user Stories:
  **Wireframes**:
@@ -21,7 +22,7 @@
 
 **User Stories**: 
 
-* As a user I want to be able to view prayer times easily.
+* As a user I want to get prayer time according to my current location.
 
 * As a user I want to be able to check both Hijri and Gregorian Calender.
 
@@ -43,10 +44,10 @@
 
 * Testing : I started to testing my app by using developer Tools such as: 1- Debugging the code, 2-Searching, 3- Brain Storming.
 
-## 4- Unsolved problems:
 
 
-## 5- Libraries Used: 
+
+## 4- Libraries Used: 
 
 <hr>
 
@@ -61,6 +62,20 @@
 * MVVM Architecture
 * DiffUtil
 * SharedPrefrence
-* HTTP Request
 * Api
 * Coroutines
+
+## 5- Favorite Function:
+
+* Alarm Service : its a service that can run notification on background.
+
+## 6- Upcoming Features: 
+
+* Adhan notification: It will remind the user on every prayer time.
+
+* Quran.
+
+
+## 6- Unsolved Problems: 
+
+* Adhan Notification
