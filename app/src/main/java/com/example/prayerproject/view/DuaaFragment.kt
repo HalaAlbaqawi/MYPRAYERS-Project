@@ -46,7 +46,7 @@ class DuaaFragment : Fragment() {
 
     }
 
-
+    // observes the live data in the viewModel
     fun observers() {
         duaaViewModel.duaaLiveData.observe(viewLifecycleOwner, {
             duaaAdapter.submitList(it)

@@ -22,6 +22,8 @@ class MyFavoriteDuaaViewModel : ViewModel() {
     val myDuaaErrorLiveData = MutableLiveData<String>()
     val LiveData = MutableLiveData<String>()
 
+
+    // this function uses the GET http request to get the data from the Api
     fun callData() {
         Log.d(TAG, "Call Data")
         viewModelScope.launch(Dispatchers.IO) {
@@ -41,7 +43,7 @@ class MyFavoriteDuaaViewModel : ViewModel() {
 
     }
 
-
+    // this function uses the PUT http request to edit data from the Api
     fun editDuaa(duaaModel: DuaaModel) {
 
         Log.d(TAG, "edit Athkar")
@@ -62,7 +64,7 @@ class MyFavoriteDuaaViewModel : ViewModel() {
             }
         }
     }
-
+    // this function uses the DELETE http request to delete data from the Api
     fun deleteDuaa(id: String) {
 
         Log.d(TAG, "delete Duaa")

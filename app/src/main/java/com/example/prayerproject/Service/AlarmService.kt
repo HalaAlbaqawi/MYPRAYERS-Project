@@ -29,6 +29,8 @@ class AlarmService : Service() {
 
     private val channelId = "Notification from Service"
 
+
+    // to set notification, also if the version < oreo we will change this code.
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate() {
         super.onCreate()
@@ -123,48 +125,6 @@ class AlarmService : Service() {
 
         return START_STICKY
 
-    }
-
-
-    private fun showNotification(title: String, text: String) {
-        val channelId =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                createNotificationChannel("my_service", "My Background Service")
-            } else {
-                // If earlier version channel ID is not used
-                // https://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html#NotificationCompat.Builder(android.content.Context)
-                ""
-            }
-
-
-        val notificationBuilder = NotificationCompat.Builder(this, channelId)
-        val notification = notificationBuilder.setOngoing(true)
-            .setSmallIcon(R.mipmap.ic_launcher)
-            .setPriority(PRIORITY_MIN)
-            .setContentTitle(title)
-            .setContentText(text)
-            .setCategory(Notification.CATEGORY_SERVICE)
-//            .setContentIntent()
-            .build()
-//        startForeground(101, notification)
-//        notify(101, notification)
-        with(NotificationManagerCompat.from(this)) {
-            notify(888, notification)
-        }
-    }
-
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun createNotificationChannel(channelId: String, channelName: String): String {
-        val chan = NotificationChannel(
-            channelId,
-            channelName, NotificationManager.IMPORTANCE_NONE
-        )
-        chan.lightColor = Color.BLUE
-        chan.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
-        val service = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        service.createNotificationChannel(chan)
-        return channelId
     }
 
 

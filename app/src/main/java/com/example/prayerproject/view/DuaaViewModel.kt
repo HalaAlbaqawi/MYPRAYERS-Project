@@ -24,6 +24,7 @@ class DuaaViewModel : ViewModel() {
         Log.d(TAG, "NO DATA")
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                // getting the response
                 val response = apiRepo.getDuaa()
 
                 response.body()?.run {
@@ -44,12 +45,14 @@ class DuaaViewModel : ViewModel() {
         Log.d(TAG, "check")
         viewModelScope.launch(Dispatchers.IO) {
             try {
+                // getting the response
                 val response = apiRepo.addDuaa(
                     DuaaModel(
                         duaaModel.duaa, "", duaaModel.title,
                         FirebaseAuth.getInstance().currentUser!!.uid
                     )
                 )
+                // checking if the response is successful
                 if (response.isSuccessful) {
                     response.body()?.run {
                         Log.d(TAG, this.toString())

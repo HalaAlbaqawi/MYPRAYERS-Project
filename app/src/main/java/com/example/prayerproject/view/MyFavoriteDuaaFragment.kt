@@ -52,10 +52,11 @@ class MyFavoriteDuaaFragment() : Fragment() {
         myFavoriteDuaaViewModel.callData()
 
     }
-
+    // observes the live data in the viewModel
     fun observers() {
         myFavoriteDuaaViewModel.myDuaaLiveData.observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "$it")
+            // fading the progress bar when the data is gotten from Api
             binding.progressbarMyfav.animate().alpha(0f)
             myFavoriteDuaaAdapter.submitList(it)
 

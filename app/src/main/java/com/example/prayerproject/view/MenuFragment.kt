@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.prayerproject.R
-import com.example.prayerproject.databinding.FragmentHomeBinding
 import com.example.prayerproject.databinding.FragmentMenuBinding
 
 class MenuFragment : Fragment() {
@@ -32,13 +31,16 @@ class MenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.duaaCardView.setOnClickListener {
+     // when the user clicks on the card view it will navigate from menu fragment to duaa fragment
+     // and from menu fragment to my favorite duaa fragment
 
+        binding.duaaCardView.setOnClickListener {
+         // to navigate between fragments
             findNavController().navigate(R.id.action_menuFragment_to_athkarFragment)
         }
 
         binding.duaaListCardView.setOnClickListener {
-            findNavController().navigate(R.id.action_menuFragment_to_myFavoriteAthkarFragment)
+            findNavController().navigate(R.id.action_menuFragment_to_myFavoriteDuaaFragment)
 
         }
 

@@ -4,6 +4,7 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.BitmapFactory
 import android.icu.text.SimpleDateFormat
@@ -17,8 +18,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.prayerproject.R
 import com.example.prayerproject.databinding.FragmentHomeBinding
+import com.example.prayerproject.main.LoginActivity
 
 import com.example.prayerproject.main.SHARED_PREF_FILE
+import com.google.firebase.auth.FirebaseAuth
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.chrono.HijrahDate
@@ -41,7 +44,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var logout: MenuItem
 
-    private val homeViewModel: HomeViewModel by activityViewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +66,15 @@ class HomeFragment : Fragment() {
         // to connect the action bar with menu
         requireActivity().menuInflater.inflate(R.menu.main_menu, menu)
         logout = menu.findItem(R.id.logout_item)
+
+        logout.setOnMenuItemClickListener {
+
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(requireActivity(),LoginActivity::class.java))
+            requireActivity().finish()
+            true
+
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -154,6 +165,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onFinish() {
+                // to save the notification state
                 sharedPref =
                     requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
                 notification()

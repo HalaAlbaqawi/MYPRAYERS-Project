@@ -14,8 +14,7 @@ class RegisterValidation {
 
     private val REGEX_EMAIL = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
 
-    private val REGEX_FIRST_NAME = ""
-    private val REGEX_LAST_NAME = ""
+    private val REGEX_NAME = ".*[A-Z].*"
 
 
     // To check if the email is valid or not
@@ -35,5 +34,13 @@ class RegisterValidation {
 
     }
 
+    fun nameIsValid(name: String): String? {
 
+
+        if (!name.matches(".*[A-Z].*".toRegex())) {
+
+           return "Invalid Format"
+        }
+        return null
+    }
 }

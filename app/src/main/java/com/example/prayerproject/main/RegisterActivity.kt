@@ -25,9 +25,11 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         emailFocusListener()
         passwordFocusListener()
         confirmPasswordFocusListener()
+
         binding.registerButton.setOnClickListener { submitForm() }
 
 
@@ -38,6 +40,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.registerButton.setOnClickListener() {
             val email: String = binding.registerEmailEditText.text.toString().trim()
             val password: String = binding.registerPasswordEditText.text.toString()
+
             if (email.isNotEmpty() && password.isNotEmpty()) {
 
                 // To check if your password and email are strong and correct
@@ -94,6 +97,8 @@ class RegisterActivity : AppCompatActivity() {
 
         val validEmail = binding.emailContainer.helperText == null
         val validPassword = binding.passwordContainer.helperText == null
+        val validFirstname = binding.firstnameContainer.helperText == null
+        val validLastname = binding.lastnameContainer.helperText == null
 
         if (validEmail && validPassword)
             resetForm()
@@ -102,17 +107,22 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun invalidForm() {
+
+
+        binding.registerEmailEditText.clearFocus()
+        binding.registerPasswordEditText.clearFocus()
+
         var message = ""
         if (binding.emailContainer.helperText != null)
             message += "\n\nEmail: " + binding.emailContainer.helperText
         if (binding.passwordContainer.helperText != null)
             message += "\n\nPassword: " + binding.passwordContainer.helperText
 
+
         AlertDialog.Builder(this)
             .setTitle("Invalid Form")
             .setMessage(message)
             .setPositiveButton("Okay") { _, _ ->
-//                 do nothing
             }
             .show()
     }
@@ -149,6 +159,8 @@ class RegisterActivity : AppCompatActivity() {
         return null
     }
 
+
+
     private fun passwordFocusListener() {
         binding.registerPasswordEditText.setOnFocusChangeListener { _, focused ->
             if (!focused) {
@@ -162,7 +174,8 @@ class RegisterActivity : AppCompatActivity() {
             if (!focused) {
                 binding.confirmPasswordContainer.helperText = validConfirmPassword()
             }
-        }
+
+    }
     }
 
     private fun validPassword(): String? {
@@ -191,4 +204,8 @@ class RegisterActivity : AppCompatActivity() {
         }
         return null
     }
+
+
+
+
 }

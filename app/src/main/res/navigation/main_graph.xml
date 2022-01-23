@@ -18,7 +18,7 @@
             app:destination="@id/aboutFragment" />
         <action
             android:id="@+id/action_homeFragment_to_myFavoriteAthkarFragment"
-            app:destination="@id/myFavoriteAthkarFragment" />
+            app:destination="@id/myFavoriteDuaaFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -40,29 +40,29 @@
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
         <action
-            android:id="@+id/action_menuFragment_to_myFavoriteAthkarFragment"
-            app:destination="@id/myFavoriteAthkarFragment" />
+            android:id="@+id/action_menuFragment_to_myFavoriteDuaaFragment"
+            app:destination="@id/myFavoriteDuaaFragment" />
         <action
             android:id="@+id/action_menuFragment_to_athkarFragment"
-            app:destination="@id/athkarFragment" />
+            app:destination="@id/duaaFragment" />
         <action
             android:id="@+id/action_menuFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
-        android:id="@+id/myFavoriteAthkarFragment"
+        android:id="@+id/myFavoriteDuaaFragment"
         android:name="com.example.prayerproject.view.MyFavoriteDuaaFragment"
         android:label="fragment_my_favorite_athkar"
         tools:layout="@layout/fragment_my_favorite_duaa" >
         <action
-            android:id="@+id/action_myFavoriteAthkarFragment_to_athkarFragment"
-            app:destination="@id/athkarFragment" />
+            android:id="@+id/action_myFavoriteAthkarFragment_to_duaaFragment"
+            app:destination="@id/duaaFragment" />
         <action
             android:id="@+id/action_myFavoriteAthkarFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
-        android:id="@+id/athkarFragment"
+        android:id="@+id/duaaFragment"
         android:name="com.example.prayerproject.view.DuaaFragment"
         android:label="fragment_athkar"
         tools:layout="@layout/fragment_duaa" >

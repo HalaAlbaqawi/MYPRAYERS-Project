@@ -111,8 +111,13 @@ class PrayersTimeFragment : Fragment() {
 
 
     fun observers() {
+        // observes the live data in the viewModel
         prayersTimeViewModel.prayerLiveData.observe(viewLifecycleOwner, {
+
+            // fading the progress bar when the data is gotten from Api
             binding.progressBarPrayerTime.animate().alpha(0f)
+
+            // setting the views with its value
             binding.fajrTextView.text = "Fajr   ${it.data.timings.fajr}"
             binding.sunriseTextView.text = "Sunrise   ${it.data.timings.sunrise}"
             binding.dhuhrTextView.text = "Dhuhr   ${it.data.timings.dhuhr}"

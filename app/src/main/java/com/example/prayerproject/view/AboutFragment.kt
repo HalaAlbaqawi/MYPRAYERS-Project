@@ -36,7 +36,8 @@ class AboutFragment : Fragment() {
 
         val link: TextView = view.findViewById(R.id.link_textView)
         link.setOnClickListener {
-            //implicit intent to open website
+
+            //implicit intent to open the website
             try {
                 val websiteIntent =
                     Intent(Intent.ACTION_VIEW, Uri.parse("https://aladhan.com/about"))
