@@ -67,7 +67,7 @@
 
 ## 5- Favorite Function:
 
-* Alarm Service 
+* Alarm Service : its a service that can run notification on background.
 
 ## 6- Upcoming Features: 
 
