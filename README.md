@@ -65,7 +65,11 @@
 * Api
 * Coroutines
 
-## 5- Upcoming Features: 
+## 5- Favorite Function:
+
+* Alarm Service 
+
+## 6- Upcoming Features: 
 
 * Adhan notification: It will remind the user on every prayer time.
 
